@@ -3,21 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/esteban/NetBeansProjects/AppCont/src/java/appcont/movimiento/addCompra.java</file>
-            <file>file:/home/esteban/NetBeansProjects/AppCont/src/java/appcont/movimiento/addVenta.java</file>
-            <file>file:/home/esteban/NetBeansProjects/AppCont/src/java/getdte/ICVVenta.java</file>
-            <file>file:/home/esteban/NetBeansProjects/AppCont/src/java/appcont/cliprov/CliProvModel.java</file>
-            <file>file:/home/esteban/NetBeansProjects/AppCont/web/index.jsp</file>
-            <file>file:/home/esteban/NetBeansProjects/AppCont/src/java/appcont/movimiento/addMovimiento.java</file>
-            <file>file:/home/esteban/NetBeansProjects/AppCont/src/java/appcont/movimiento/getCompra.java</file>
-            <file>file:/home/esteban/NetBeansProjects/AppCont/src/java/com/calxmlsii/auth/SignToken.java</file>
-            <file>file:/home/esteban/NetBeansProjects/AppCont/web/logout.jsp</file>
-            <file>file:/home/esteban/NetBeansProjects/AppCont/src/java/appcont/movimiento/MovimientoModel.java</file>
-            <file>file:/home/esteban/NetBeansProjects/AppCont/src/java/com/calxmlsii/auth/Token.java</file>
-            <file>file:/home/esteban/NetBeansProjects/AppCont/src/java/com/calxmlsii/auth/Semilla.java</file>
-            <file>file:/home/esteban/NetBeansProjects/AppCont/src/java/appcont/movimiento/MovimientoServlet.java</file>
-            <file>file:/home/esteban/NetBeansProjects/AppCont/src/java/appcont/movimiento/getVenta.java</file>
-            <file>file:/home/esteban/NetBeansProjects/AppCont/web/movimientoview/detalleventaview.jsp</file>
+            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/cliprov/CliProvServlet.java</file>
+            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/include/Conexion.java</file>
+            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/cliprov/CliProv.java</file>
+            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/movimiento/getVenta.java</file>
         </group>
     </open-files>
 </project-private>

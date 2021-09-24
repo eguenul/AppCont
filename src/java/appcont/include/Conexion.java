@@ -15,15 +15,12 @@ public class Conexion {
          try {
              
           ConfigClass objconfig = new ConfigClass();
-           
-             
+               
+          Class.forName("com.mysql.jdbc.Driver");
+          cnx = DriverManager.getConnection("jdbc:mysql://localhost/AppCont?useSSL=FALSE", "root" ,"Esther65@");
             
-             
-            Class.forName("com.mysql.jdbc.Driver");
-            cnx = DriverManager.getConnection("jdbc:mysql://"+"localhost"+"/"+"AppCont"+"?autoReconnect=true", "root","esther65");
-            
-            Statement stmt2 = cnx.createStatement();
-             stmt2.execute("SET CHARACTER SET utf8");
+          Statement stmt2 = cnx.createStatement();
+          stmt2.execute("SET CHARACTER SET utf8");
             
          } catch (SQLException ex) {
             throw new SQLException(ex);

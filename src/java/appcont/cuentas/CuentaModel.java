@@ -11,4 +11,48 @@ package appcont.cuentas;
  */
 public class CuentaModel {
     
+
+
+                public void addCuenta(){
+
+
+                }
+
+                public void initCuenta(){
+                    
+                    
+                    
+                }
+                
+                
+                
+                
+
+                public void updateCuenta(){
+
+
+                }
+
+
+
+               public void listCuenta(){
+                   
+                   
+               }     
+
+               public void deleteCuenta(){
+                   
+               
+               
+               
+               }
+
+               
+               public int getIDCuenta(){
+                   
+                   
+                   return 0;
+               }
+               
+
 }
