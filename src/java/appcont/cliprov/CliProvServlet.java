@@ -78,7 +78,9 @@ public class CliProvServlet extends HttpServlet {
         String acc = request.getParameter("ACC");
          
          int empresaid =   (int) request.getSession().getAttribute("empresaid");
-         request.getSession().setAttribute("modulo", "cliprov");
+         
+         String modulo = (String) request.getSession().getAttribute("modulo");
+         request.getSession().setAttribute("modulo", modulo);
          try {
              
               if("UPDATE".equals(acc)){ 

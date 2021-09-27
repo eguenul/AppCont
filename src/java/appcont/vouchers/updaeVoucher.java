@@ -9,6 +9,6 @@ package appcont.vouchers;
  *
  * @author esteban
  */
-public class VoucherServlet {
+public class updaeVoucher {
     
 }

@@ -23,7 +23,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class ConfigEnvironment {
+public class ConfigEnvirontment {
     
     
     
@@ -43,11 +43,11 @@ private final String pathcert;
     
     
 
-    public ConfigEnvironment() throws ParserConfigurationException, SAXException, IOException{
+    public ConfigEnvirontment() throws ParserConfigurationException, SAXException, IOException{
        
         
        
-       filepath = "appdteconf.xml";
+       filepath = "appcontconf.xml";
 	
          DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 	 DocumentBuilder docBuilder = docFactory.newDocumentBuilder();

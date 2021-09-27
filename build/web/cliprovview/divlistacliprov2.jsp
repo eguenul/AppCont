@@ -19,10 +19,10 @@
     for(CliProv cliprov : cliprovs)
     { %>
     <% 
-    if(   request.getSession().getAttribute("modulo")=="movimiento"){
+    if(   request.getSession().getAttribute("modulo")=="addMovimiento"){
     %>
     <tr>
-        <td onclick="ACC.value='BUSCAR'; CliProvCod.value='<% out.print(cliprov.getCliprovcod()); %>'; document.getElementById('formmovimiento').submit();"  ><% out.print(cliprov.getCliprovcod()); %></td>   
+        <td onclick="ACC.value='BUSCAR'; CliProvCod.value='<% out.print(cliprov.getCliprovcod()); %>'; document.formregistro.submit();"  ><% out.print(cliprov.getCliprovcod()); %></td>   
     <td><% out.print(cliprov.getCliprovraz()); %></td>
  
     <td><% out.print(cliprov.getCliprovrut()); %></td>

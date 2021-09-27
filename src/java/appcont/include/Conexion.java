@@ -14,9 +14,9 @@ public class Conexion {
       if (cnx == null) {
          try {
              
-          ConfigClass objconfig = new ConfigClass();
+          ConfigEnvirontment objconfig = new ConfigEnvirontment();
                
-          Class.forName("com.mysql.jdbc.Driver");
+          Class.forName("com.mysql.cj.jdbc.Driver");
           cnx = DriverManager.getConnection("jdbc:mysql://localhost/AppCont?useSSL=FALSE", "root" ,"Esther65@");
             
           Statement stmt2 = cnx.createStatement();

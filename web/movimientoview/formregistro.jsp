@@ -1,12 +1,11 @@
 <%@page import="java.util.List"%>
 <%@page import="appcont.documento.Documento"%>
 <%@page import="appcont.documento.DocumentoModel"%>
-<%@page import="appcont.cliprov.CliProv"%>
+
 <%    DocumentoModel objDocumentoModel = new DocumentoModel();
       List<Documento> arraylistdocumento = objDocumentoModel.listDocuments();
 %>     
-<% CliProv objcliprov = new CliProv(); %>
-<form>
+<form name="formregistro" action="addMovimiento" method="POST">
            <table   id="tabla1" class="table table-bordered table-striped">
   
 <tr>
@@ -15,45 +14,60 @@
 <tr>      
       <td colspan="4" align="right">
        
-          <button type="button" name="btnLimpiar" onClick="window.location.href='movimiento';" class="btn btn-primary btn-sm">
+          <button type="button" name="btnLimpiar" onClick="window.location.href='addMovimiento';" class="btn btn-primary btn-sm">
           <span class="glyphicon glyphicon-file"></span>Nuevo 
            </button>
                      
-              <button onclick="window.location='index.jsp';" type="button" name="btnLimpiar" class="btn btn-primary btn-sm">
-          <span class="glyphicon glyphicon-home"></span>Home 
+         <button type="button" name="btnLimpiar" onClick="window.location.href='addMovimiento';" class="btn btn-primary btn-sm">
+          <span class="glyphicon glyphicon-floppy-disk"></span>Grabar 
            </button>
+                     
        
+          
+          
+          
+          
+          <button onclick="window.location='index.jsp';" type="button" name="btnHome" class="btn btn-primary btn-sm">
+          <span class="glyphicon glyphicon-home"></span>Home 
+          </button>
+       
+             <button onclick="window.location='index.jsp';" type="button" name="btnHome" class="btn btn-primary btn-sm">
+          <span class="glyphicon glyphicon-trash"></span>Borrar 
+           </button>
+          
+          
+          
       </td>
     </tr>
     <tr>
       <td>CODIGO CLIENTE/PROVEEDOR</td>
-      <td><input readonly="yes" value="<% if(objcliprov.getCliprovcod()==0){out.print(""); }else{   out.print(objcliprov.getCliprovcod());} %>"   name="CliProvCod" type="text" id="CliProvCod"  size="8" maxlength="6">
+      <td><input readonly="yes" value="<% out.print(request.getSession().getAttribute("CliProvCod")); %>"   name="CliProvCod" type="text" id="CliProvCod"  size="8" maxlength="6">
             <button name="btnListadoCliProv" type="button" id="btnListadoCliProv" data-toggle="modal" data-target="#divcliprov"  class="btn btn-primary btn-sm">
           <span class="glyphicon glyphicon-search"></span>Buscar
         </button>
         
       </td>
       <td>RUT CLIENTE/PROVEEDOR</td>
-      <td><input  name="CliProvRut" value="<% out.print(objcliprov.getCliprovrut()); %>"   readonly="yes" type="text" id="CliProvRut" size="8" maxlength="8">
+      <td><input  name="CliProvRut" value="<% out.print(request.getSession().getAttribute("CliProvRut")); %>"   readonly="yes" type="text" id="CliProvRut" size="8" maxlength="8">
       </td>
     </tr>
     <tr>
       <td>RAZON SOCIAL</td>
-      <td><input  readonly="yes" name="CliProvRaz" value="<% out.print(objcliprov.getCliprovraz()); %>"  type="text" id="CliProvRaz"></td>
+      <td><input  readonly="yes" name="CliProvRaz" value="<% out.print(request.getSession().getAttribute("CliProvRaz")); %>"  type="text" id="CliProvRaz"></td>
       <td>GIRO</td>
-      <td><input   readonly="yes" name="CliProvGir" value="<% out.print(objcliprov.getCliprovgir()); %>" type="text" id="CliProvGir"></td>
+      <td><input   readonly="yes" name="CliProvGir" value="<% out.print(request.getSession().getAttribute("CliProvGir")); %>" type="text" id="CliProvGir"></td>
     </tr>
     <tr>
       <td>COMUNA</td>
-      <td><input   readonly="yes" name="CliProvCom" value="<% out.print(objcliprov.getCliprovcom()); %>" type="text" id="CliProvCom"></td>
+      <td><input   readonly="yes" name="CliProvCom" value="<% out.print(request.getSession().getAttribute("CliProvCom")); %>" type="text" id="CliProvCom"></td>
       <td>CIUDAD</td>
-      <td><input   readonly="yes" name="CliProvCiu" value="<% out.print(objcliprov.getCliprovciu()); %>" type="text" id="CliProvCiu"></td>
+      <td><input   readonly="yes" name="CliProvCiu" value="<% out.print(request.getSession().getAttribute("CliProvCiu")); %>" type="text" id="CliProvCiu"></td>
     </tr>
     <tr>
     <td>DIRECCION</td>
-    <td><input readonly="yes" name="CliProvdIR" value="<% out.print(objcliprov.getCliprovdir()); %>" type="text" id="CliProvGir"></td>
+    <td><input readonly="yes" name="CliProvDir" value="<% out.print(request.getSession().getAttribute("CliProvDir")); %>" type="text" id="CliProvDir"></td>
     <td>FONO</td>
-    <td><input  readonly="yes" name="CliProvdIR" value="<% out.print(objcliprov.getCliprovfon()); %>" type="text" id="CliProvGir"></td>
+    <td><input  readonly="yes" name="CliProvFon" value="<% out.print(request.getSession().getAttribute("CliProvFon")); %>" type="text" id="CliProvFon"></td>
    
     </tr>
     
@@ -81,7 +95,12 @@
          <td>
             NRO DOCUMENTO
         </td>
-        <td><input></td>
+        <td><input>
+         <button name="btnListadoCliProv" type="button" id="btnListadoCliProv" data-toggle="modal" data-target="#divcliprov"  class="btn btn-primary btn-sm">
+          <span class="glyphicon glyphicon-search"></span>Buscar
+        </button>
+        
+        </td>
         
         
 </tr>
@@ -89,7 +108,7 @@
         <td>
            FECHA DOCUMENTO
         </td>
-        <td><input></td>
+        <td><input type="date"></td>
        
         
          <td>

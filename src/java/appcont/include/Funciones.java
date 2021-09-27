@@ -26,7 +26,7 @@ public class Funciones {
         String sql;
         sql="Select EmpresaRut from Empresa where EmpresaId="+String.valueOf(empresaid);
         
-        ConfigClass objconfig = new ConfigClass();
+        ConfigEnvirontment objconfig = new ConfigEnvirontment();
         Conexion obj= new Conexion();
         objconexion = obj.obtener();
         Statement stm = objconexion.createStatement();

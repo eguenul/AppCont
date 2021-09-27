@@ -1,7 +1,7 @@
 <web-app> 
     <servlet>
       <servlet-name>getCompra</servlet-name>
-      <servlet-class>appcont.movimiento.getCompraServlet</servlet-class>
+      <servlet-class>appcont.movimiento.getCompra</servlet-class>
    </servlet>
   <servlet-mapping>
       <servlet-name>getCompra</servlet-name>
@@ -10,23 +10,43 @@
    
     <servlet>
       <servlet-name>getVenta</servlet-name>
-      <servlet-class>appcont.movimiento.getVentaServlet</servlet-class>
+      <servlet-class>appcont.movimiento.getVenta</servlet-class>
    </servlet>
   <servlet-mapping>
       <servlet-name>getVenta</servlet-name>
       <url-pattern>/getVenta</url-pattern>
    </servlet-mapping>
-    <servlet>
-      <servlet-name>movimiento</servlet-name>
-      <servlet-class>appcont.movimiento.MovimientoServlet</servlet-class>
+  
+   
+   
+   <servlet>
+      <servlet-name>addMovimiento</servlet-name>
+      <servlet-class>appcont.movimiento.addMovimiento</servlet-class>
    </servlet>
   <servlet-mapping>
-      <servlet-name>movimiento</servlet-name>
-      <url-pattern>/movimiento</url-pattern>
+      <servlet-name>addMovimiento</servlet-name>
+      <url-pattern>/addMovimiento</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+      <servlet-name>addventa</servlet-name>
+      <servlet-class>appcont.movimiento.addVenta</servlet-class>
+   </servlet>
+  <servlet-mapping>
+      <servlet-name>addventa</servlet-name>
+      <url-pattern>/addVenta</url-pattern>
    </servlet-mapping>
    
    
    
+   <servlet>
+      <servlet-name>addcompra</servlet-name>
+      <servlet-class>appcont.movimiento.addCompra</servlet-class>
+   </servlet>
+  <servlet-mapping>
+      <servlet-name>addcompra</servlet-name>
+      <url-pattern>/addCompra</url-pattern>
+   </servlet-mapping>
    
    
    
@@ -38,6 +58,12 @@
       <servlet-name>cliprov</servlet-name>
       <url-pattern>/cliprov</url-pattern>
    </servlet-mapping>
+   
+   
+   
+   
+   
+   
    
    
    

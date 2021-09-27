@@ -63,8 +63,8 @@ if(objEmpresa.getEmpresaid()==0){
           PROCESOS <b class="caret"></b>
           </a>
             <ul class="dropdown-menu">
-                <li><a href="getVenta">INGRESO DE VENTAS</a></li>
-                <li><a href="getVenta">INGRESO COMPRAS</a></li>
+                <li><a href="addVenta">INGRESO DE VENTAS</a></li>
+                <li><a href="addCompra">INGRESO COMPRAS</a></li>
                 <li><a href="getVenta">IMPORTACION DTE VENTA</a></li>
                 <li><a href="getCompra">IMPORTACION DTE COMPRA</a></li>
                 <li><a href="getCompra">CENTRALIZACION VENTAS</a></li>

@@ -6,7 +6,7 @@
 package appcont.login;
 
 
-import appcont.include.ConfigEnvironment;
+import appcont.include.ConfigEnvirontment;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -35,9 +35,10 @@ public class LoginServlet  extends HttpServlet {
               
               /* BUSCO SI EXISTE CERTIFICADO DIGITAL */
              
-              ConfigEnvironment objConfig = new ConfigEnvironment();
+              ConfigEnvirontment objConfig = new ConfigEnvirontment();
                          
               String sFichero = objConfig.getPathcert()+login;
+              System.out.print(sFichero);
               File fichero = new File(sFichero);
               
               if("admin".equals(login)==false){

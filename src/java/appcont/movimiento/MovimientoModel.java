@@ -79,6 +79,31 @@ Connection auxconexion = objconexion.obtener();
 
 }
 
+public void deleteDoc(){
+    
+    
+    
+}
+
+
+public void updateDoc(){
+    
+    
+    
+}
+
+
+
+
+
+
 
 
 }
+
+
+
+
+
+
+
