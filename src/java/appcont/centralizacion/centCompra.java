@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package appcont.movimiento;
+package appcont.centralizacion;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -15,14 +15,19 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author esteban
  */
-public class addVenta extends HttpServlet {
-   @Override 
- public void  doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+public class centCompra extends HttpServlet{
     
-    request.getSession().setAttribute("tipo_movimiento", "VENTA");
-    response.sendRedirect("addMovimiento");
- 
     
- }
     
+
+
+@Override
+public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+  response.sendRedirect("centralizacion");
+
+}
+
+
+
+
 }

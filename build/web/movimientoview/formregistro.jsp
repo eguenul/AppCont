@@ -4,7 +4,30 @@
 
 <%    DocumentoModel objDocumentoModel = new DocumentoModel();
       List<Documento> arraylistdocumento = objDocumentoModel.listDocuments();
+      String estadodoc = (String) request.getSession().getAttribute("ESTADODOC");
+
+
+
+if(estadodoc=="OK"){ %>
+<div aligin="center">
+ <div class="alert alert-success">
+  <strong>OPERACION REALIZADA</strong> DOCUMENTO AGREGADO.
+</div>
+
+</div>
+<%    request.getSession().setAttribute("ESTADODOC",null); }
 %>     
+
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#home">DATOS GENERALES</a></li>
+  <li><a data-toggle="tab" href="#menu1">INFORMACION GLOSA</a></li>
+  <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+</ul>
+
+
+<div class="tab-content">
+  <div id="home" class="tab-pane fade in active">
+    
 <form name="formregistro" action="addMovimiento" method="POST">
            <table   id="tabla1" class="table table-bordered table-striped">
   
@@ -18,7 +41,7 @@
           <span class="glyphicon glyphicon-file"></span>Nuevo 
            </button>
                      
-         <button type="button" name="btnLimpiar" onClick="window.location.href='addMovimiento';" class="btn btn-primary btn-sm">
+         <button type="button" name="btnLimpiar" onClick="addDocumento();" class="btn btn-primary btn-sm">
           <span class="glyphicon glyphicon-floppy-disk"></span>Grabar 
            </button>
                      
@@ -80,7 +103,7 @@
         <td>
             TIPO DE DOCUMENTO
         </td>
-                <td><select>
+                <td><select name="TipoDoc" id="TipoDoc">
           <%   for(Documento i:arraylistdocumento){
            
                     %> 
@@ -95,8 +118,8 @@
          <td>
             NRO DOCUMENTO
         </td>
-        <td><input>
-         <button name="btnListadoCliProv" type="button" id="btnListadoCliProv" data-toggle="modal" data-target="#divcliprov"  class="btn btn-primary btn-sm">
+        <td><input name="NumDoc" id="NumDoc">
+         <button name="btnsearchDoc" type="button" id="btnsearchDoc" data-toggle="modal" data-target="#divsearchdoc"  class="btn btn-primary btn-sm">
           <span class="glyphicon glyphicon-search"></span>Buscar
         </button>
         
@@ -108,7 +131,7 @@
         <td>
            FECHA DOCUMENTO
         </td>
-        <td><input type="date"></td>
+        <td><input name="FechaDoc" id="FechaDoc" type="date"></td>
        
         
          <td>
@@ -131,13 +154,13 @@
     <td>MONTO EXENTO</td>
     <td>MONTO NETO</td>
     <td>IVA</td>
-    <td>TOTAL BRUTO</td>
+    <td>MONTO TOTAL</td>
 </tr>
 <tr> 
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
-    <td><input></td>
+    <td><input name="MontoExento" id="MontoExento"></td>
+    <td><input name="MontoNeto" id="MontoNeto"></td>
+    <td><input name=MontoIva" id="MontoIva"></td>
+    <td><input name="MontoTotal" id="MontoTotal"></td>
 </tr>
 
 
@@ -148,3 +171,35 @@
            </table>
                 <input type="hidden" name="ACC" id="ACC" value="GRABAR">
         </form>
+ </div>
+  <div id="menu1" class="tab-pane fade">
+        <table>
+        <tr>
+            <td>
+            GLOSA
+            </td>
+        </tr>
+     <tr>
+            <td>
+                <input>
+            </td>
+        </tr>
+     
+      
+    </table>
+  
+  
+  
+  
+  </div>
+  <div id="menu2" class="tab-pane fade">
+    <h3>Menu 2</h3>
+    <p>Some content in menu 2.</p>
+  </div>
+</div>
+
+
+
+
+
+

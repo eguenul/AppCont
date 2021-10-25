@@ -90,6 +90,20 @@ public String getNombreDocCodSii(String codsii) throws SQLException{
    
 }
 
+public Documento getObjDoc(int idDoc) throws SQLException{
+    Documento objDoc = new Documento();
+    String sql = "Select *  from TipoDocumentos where TipoDocumentoId="+idDoc;     
+    Statement stm = objconexion.createStatement();
+    ResultSet objrecordset = stm.executeQuery(sql);
+    
+    objrecordset.next();
+    objDoc.setCodsii(objrecordset.getInt("CodigoSii"));
+    objDoc.setNombredoc(objrecordset.getString("TipoDocumentoDes"));
+    objDoc.setIddoc(idDoc);
+    
+    return objDoc;
+} 
+
 
 
 }

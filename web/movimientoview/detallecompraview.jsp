@@ -1,6 +1,6 @@
+<%@page import="getdte.DetalleCompra"%>
 <%@page import="appcont.documento.DocumentoModel"%>
 <%@page import="java.util.List"%>
-<%@page import="com.sii.utilidades.DetalleCompra"%>
 <%@page import="java.util.ArrayList"%>
 <%
    List<DetalleCompra> arraydetallecompra = (ArrayList<DetalleCompra>) request.getSession().getAttribute("arraydetallecompra");

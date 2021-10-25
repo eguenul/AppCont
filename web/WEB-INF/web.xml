@@ -100,7 +100,63 @@
   <servlet-name>empresa</servlet-name>
   <url-pattern>/empresa</url-pattern>
 </servlet-mapping>
- <session-config>
+
+
+
+
+
+<servlet>
+   <servlet-name>centcompra</servlet-name>
+   <servlet-class>appcont.centralizacion.centCompra</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>centcompra</servlet-name>
+  <url-pattern>/centcompra</url-pattern>
+</servlet-mapping>
+
+
+
+
+
+
+<servlet>
+   <servlet-name>centventa</servlet-name>
+   <servlet-class>appcont.centralizacion.centVenta</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>centventa</servlet-name>
+  <url-pattern>/centventa</url-pattern>
+</servlet-mapping>
+
+
+
+
+
+<servlet>
+   <servlet-name>centralizacion</servlet-name>
+   <servlet-class>appcont.centralizacion.addCentralizacion</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>centralizacion</servlet-name>
+  <url-pattern>/centralizacion</url-pattern>
+</servlet-mapping>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<session-config>
 <session-timeout>-1</session-timeout>
 </session-config>
 </web-app>

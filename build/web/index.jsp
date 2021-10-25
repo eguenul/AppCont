@@ -67,9 +67,9 @@ if(objEmpresa.getEmpresaid()==0){
                 <li><a href="addCompra">INGRESO COMPRAS</a></li>
                 <li><a href="getVenta">IMPORTACION DTE VENTA</a></li>
                 <li><a href="getCompra">IMPORTACION DTE COMPRA</a></li>
-                <li><a href="getCompra">CENTRALIZACION VENTAS</a></li>
+                <li><a href="centventa">CENTRALIZACION VENTAS</a></li>
             
-                <li><a href="getCompra">CENTRALIZACION COMPRAS</a></li>
+                <li><a href="centcompra">CENTRALIZACION COMPRAS</a></li>
                 
                 <li><a href="selempresa">SELECCION EMPRESA</a></li>
                 

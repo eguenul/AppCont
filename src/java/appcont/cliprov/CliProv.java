@@ -16,6 +16,10 @@ private String cliprovcom;
 private String cliprovraz;
 private int cliprovid;
 
+public CliProv(){
+
+}
+
     public int getCliprovcod() {
         return cliprovcod;
     }

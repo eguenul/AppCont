@@ -6,9 +6,9 @@
 package appcont.documento;
 
 public class Documento {
-    int iddoc;
-    String nombredoc;
-    int codsii;
+private int iddoc;
+private String nombredoc;
+private int codsii;
 
     public int getIddoc() {
         return iddoc;

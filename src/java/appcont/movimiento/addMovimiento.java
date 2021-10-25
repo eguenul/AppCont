@@ -7,6 +7,8 @@ package appcont.movimiento;
 
 import appcont.cliprov.CliProv;
 import appcont.cliprov.CliProvModel;
+import appcont.documento.Documento;
+import appcont.documento.DocumentoModel;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -76,13 +78,15 @@ public void  doPost(HttpServletRequest request, HttpServletResponse response) th
            /* ArrayList<CliProv> arraylistcliprov = objCliProvModel.listaCliProv(0); */
         
              String acc = request.getParameter("ACC");
+            int cliprovcod = 0;
             
+            CliProv objCliProv = new CliProv(); 
             
              switch (acc){
                  
                  case "BUSCAR":
-                                int cliprovcod = Integer.parseInt(request.getParameter("CliProvCod").trim());
-                                CliProv objCliProv = objCliProvModel.searchCliProv(cliprovcod);
+                                 cliprovcod = Integer.parseInt(request.getParameter("CliProvCod").trim());
+                                 objCliProv = objCliProvModel.searchCliProv(cliprovcod);
                      
                                    request.getSession().setAttribute("CliProvCod", cliprovcod);
                                    request.getSession().setAttribute("CliProvRut", objCliProv.getCliprovrut());
@@ -122,19 +126,58 @@ public void  doPost(HttpServletRequest request, HttpServletResponse response) th
                      
                  case "GRABAR":
                      
-                 break;
-                     
-                 
                      
                      
+                     cliprovcod = Integer.parseInt(request.getParameter("CliProvCod").trim());
+                     int tipodocid = Integer.parseInt(request.getParameter("TipoDoc").trim());
                      
+                     Documento objDoc = new Documento();
+                     DocumentoModel objDocModel = new DocumentoModel();   
+                     objDoc = objDocModel.getObjDoc(tipodocid);
                      
+                     objCliProv = objCliProvModel.searchCliProv(cliprovcod);
+                                                                         
                      
+                     int numdoc = Integer.parseInt(request.getParameter("NumDoc").trim());
+                     int montoneto = Integer.parseInt(request.getParameter("MontoNeto").trim());
+                     int montoexento = Integer.parseInt(request.getParameter("MontoExento").trim());
+                     int montoiva = Integer.parseInt(request.getParameter("MontoIva").trim());
+                     int montototal =Integer.parseInt(request.getParameter("MontoTotal").trim());
+                     String fechadoc = request.getParameter("FechaDoc");
                      
-            
-             
-             
-             
+                     Movimiento objMovimiento = new Movimiento();
+                     objMovimiento.setNumdoc(numdoc);
+                     objMovimiento.setMontoafecto(montoneto);
+                     objMovimiento.setMontoexento(montoexento);
+                     objMovimiento.setMontoiva(montoiva);
+                     objMovimiento.setMontototal(montototal);
+                     objMovimiento.setFechadoc(fechadoc);
+                     
+                     request.getSession().setAttribute("CliProvCod", "");
+                     request.getSession().setAttribute("CliProvRut", "");
+                     request.getSession().setAttribute("CliProvRaz", "");
+                     request.getSession().setAttribute("CliProvGir", "");
+                     request.getSession().setAttribute("CliProvDir", "");
+                     request.getSession().setAttribute("CliProvFon", "");
+                     request.getSession().setAttribute("CliProvCiu", "");
+                     request.getSession().setAttribute("CliProvCom", "");
+                    
+                    
+                     objMovimiento.setCliprov(objCliProv);
+                     objMovimiento.setTipodocumento(objDoc);
+                     
+                     MovimientoModel objMovimientoModel = new MovimientoModel(empresaid);
+                   
+                     String desTipomovimiento = (String) request.getSession().getAttribute("tipo_movimiento");
+                     int codTipoMovimiento = objMovimientoModel.get_idTipoMovmiento(desTipomovimiento.trim());
+                    
+                     objMovimientoModel.addDoc(objMovimiento,codTipoMovimiento);
+                    
+                     request.getSession().setAttribute("ESTADODOC","OK");
+                     getServletConfig().getServletContext().getRequestDispatcher("/movimientoview/formregistro.jsp").forward(request,response);
+         
+                    break;
+                    
              }
             
             

@@ -350,7 +350,7 @@ public Empresa getData(int empresaid) throws SQLException{
         objEmpresa.setEmpresafechresol(objrecordset.getString("EmpresaFechaResolucion"));
         objEmpresa.setEmpresanumresol(objrecordset.getInt("EmpresaResolucionNum"));
         objEmpresa.setSucursalsiicod(objrecordset.getInt("SucursalSiiCod"));
-         objEmpresa.setEmpresaid(objrecordset.getInt("EmpresaId"));
+        objEmpresa.setEmpresaid(objrecordset.getInt("EmpresaId"));
     }
     
     return objEmpresa;

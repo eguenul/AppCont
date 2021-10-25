@@ -5,7 +5,9 @@
  */
 package appcont.movimiento;
 
+import appcont.cliprov.CliProv;
 import appcont.cliprov.CliProvModel;
+import appcont.documento.Documento;
 import appcont.documento.DocumentoModel;
 import appcont.include.Conexion;
 import java.io.IOException;
@@ -64,20 +66,83 @@ public void addDocSii(String cliprovrut, String codsii, String folio, int tipomo
 if (searchDocSii(cliprovrut, codsii, folio)==true){    
    CliProvModel objCliProvModel = new CliProvModel(this.empresaid);
    DocumentoModel objDocumentoModel = new DocumentoModel();
+   /*
    int cliprovid = objCliProvModel.getIdCliProv(cliprovrut);
    int iddoc = objDocumentoModel.getId(codsii);
    addDoc(cliprovid,iddoc, tipomovimiento); 
    
-   
+   */
    
 }
 }
 
-public void addDoc(int cliprovid, int idddoc,int tipomovimiento) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
-Conexion objconexion = new Conexion();
-Connection auxconexion = objconexion.obtener();
+public void addDoc(Movimiento objMovimiento, int codTipoMovimiento) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
+ Conexion objconexion = new Conexion();
+ Connection conexion = objconexion.obtener();
+ 
+CliProv objCliProv = objMovimiento.getCliprov();
+Documento objDoc = objMovimiento.getTipodocumento();
+
+
+
+int montoexento = objMovimiento.getMontoexento();
+int montoafecto = objMovimiento.getMontoafecto();
+int montoiva = objMovimiento.getMontoiva();
+int montototal = objMovimiento.getMontototal();
+int numdoc = objMovimiento.getNumdoc();
+int tipodoc = objDoc.getIddoc();
+int cliprovid = objCliProv.getCliprovid();
+String fechadoc = objMovimiento.getFechadoc();
+
+String sql = "INSERT INTO Movimiento(EmpresaId,CliProvId, FechaDoc,NumDoc,"
+             + "TipoDocumentoId,"
+             + "MontoExento,"
+             + "MontoNeto,"
+             + "MontoIva,"
+             + "MontoTotal,"  
+             +  "idTipoMovimiento" + ") \n"+
+             "values( \n"+
+             String.valueOf(this.empresaid)+","+
+             String.valueOf(cliprovid)+","+
+             "'"+ fechadoc  +"',"+
+             String.valueOf(numdoc)+","+ 
+             String.valueOf(tipodoc)+","+ 
+             String.valueOf(montoexento)+","+
+             String.valueOf(montoafecto)+","+
+             String.valueOf(montoiva)+","+
+             String.valueOf(montototal)+","+
+             String.valueOf(codTipoMovimiento)+""+
+         
+              ")";
+
+
+
+
+
+
+ 
+    System.out.print(sql);
+    Statement smt1 = conexion.createStatement();
+    smt1.execute(sql);
+   
 
 }
+
+public int get_idTipoMovmiento(String desMovimiento) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
+    Conexion objconexion = new Conexion();
+    Connection auxconexion = objconexion.obtener();
+     Statement stmt = auxconexion.createStatement();
+        
+        String sqlQuery = "Select * from TipoMovimiento where MovimientoDes='" + desMovimiento + "'\n";
+       
+        ResultSet objRecordset = stmt.executeQuery(sqlQuery);
+        objRecordset.next();
+        return objRecordset.getInt("idTipoMovimiento");
+   
+} 
+
+
+
 
 public void deleteDoc(){
     
@@ -93,7 +158,13 @@ public void updateDoc(){
 }
 
 
-
+public void listDocumentos(){
+    
+    
+    
+    
+    
+}
 
 
 
