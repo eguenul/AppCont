@@ -15,6 +15,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
@@ -140,6 +141,43 @@ public int get_idTipoMovmiento(String desMovimiento) throws SQLException, ClassN
         return objRecordset.getInt("idTipoMovimiento");
    
 } 
+
+public ArrayList<Object> listMovimientos() throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
+    
+    
+    
+    Conexion objconexion = new Conexion();
+    Connection auxconexion = objconexion.obtener();
+    Statement stmt = auxconexion.createStatement();
+    
+    String sqlQuery = "Select Empresa.EmpresaId, CliProv.CliProvRaz,CliProv.CliProvRut, TipoDocumentos.TipoDocumentoDes, Movimiento.* from Movimiento \n"+
+"inner join TipoDocumentos on TipoDocumentos.TipoDocumentoId = Movimiento.TipoDocumentoId \n"+
+"inner join CliProv on CliProv.CliProvId = Movimiento.CliProvId \n"+
+"inner join Empresa on Empresa.EmpresaId = Movimiento.EmpresaId";
+       
+  ResultSet objRecordset = stmt.executeQuery(sqlQuery);
+  
+  ArrayList<Object> arrayObject = new ArrayList<>();
+  
+  while(objRecordset.next()){
+            Object[] objDetalle = new Object[12];
+            objDetalle[0] = objRecordset.getInt("EmpresaId");
+            objDetalle[1] = objRecordset.getString("CliProvRaz");
+            objDetalle[2] = objRecordset.getString("CliProvRut");
+            objDetalle[3] = objRecordset.getString("TipoDocumentoDes");
+            objDetalle[4] = objRecordset.getInt("NumDoc");
+            objDetalle[5] = objRecordset.getDate("FechaDoc");
+            objDetalle[6] = objRecordset.getInt("MontoTotal");
+            arrayObject.add(objDetalle);
+           }
+
+return arrayObject;
+
+
+}
+
+
+
 
 
 

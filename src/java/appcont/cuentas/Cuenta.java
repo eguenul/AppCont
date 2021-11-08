@@ -12,16 +12,51 @@ package appcont.cuentas;
 public class Cuenta {
     
     
-    int cuentacod;
-    int cuentaid;
-    int empresaid;
-    int cuentanivel;
-    String cuentanom;
-    int cuentacod1;
-    int cuentacod2;
-    int cuentacod3;
-    int cuentacod4;
-    int cuentacod5;
+    private int cuentacod;
+    private int cuentaid;
+    private int empresaid;
+    private int cuentanivel;
+    private String cuentanom;
+
+    public int getCuentacod() {
+        return cuentacod;
+    }
+
+    public void setCuentacod(int cuentacod) {
+        this.cuentacod = cuentacod;
+    }
+
+    public int getCuentaid() {
+        return cuentaid;
+    }
+
+    public void setCuentaid(int cuentaid) {
+        this.cuentaid = cuentaid;
+    }
+
+    public int getEmpresaid() {
+        return empresaid;
+    }
+
+    public void setEmpresaid(int empresaid) {
+        this.empresaid = empresaid;
+    }
+
+    public int getCuentanivel() {
+        return cuentanivel;
+    }
+
+    public void setCuentanivel(int cuentanivel) {
+        this.cuentanivel = cuentanivel;
+    }
+
+    public String getCuentanom() {
+        return cuentanom;
+    }
+
+    public void setCuentanom(String cuentanom) {
+        this.cuentanom = cuentanom;
+    }
             
   
 }

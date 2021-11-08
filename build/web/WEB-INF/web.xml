@@ -17,6 +17,18 @@
       <url-pattern>/getVenta</url-pattern>
    </servlet-mapping>
   
+  
+  
+    <servlet>
+      <servlet-name>listCuenta</servlet-name>
+      <servlet-class>appcont.cuentas.listCuenta</servlet-class>
+   </servlet>
+  <servlet-mapping>
+      <servlet-name>listCuenta</servlet-name>
+      <url-pattern>/listCuenta</url-pattern>
+   </servlet-mapping>
+  
+  
    
    
    <servlet>

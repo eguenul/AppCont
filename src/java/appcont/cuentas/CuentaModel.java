@@ -5,11 +5,30 @@
  */
 package appcont.cuentas;
 
+import appcont.include.Conexion;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import javax.xml.parsers.ParserConfigurationException;
+import org.xml.sax.SAXException;
+
 /**
  *
  * @author esteban
  */
 public class CuentaModel {
+    
+       private final Connection conexion;
+    public CuentaModel() throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
+        
+           Conexion auxconexion = new Conexion();
+           conexion = auxconexion.obtener();
+      
+        
+    }
     
 
 
@@ -19,7 +38,7 @@ public class CuentaModel {
                 }
 
                 public void initCuenta(){
-                    
+                     
                     
                     
                 }
@@ -35,10 +54,21 @@ public class CuentaModel {
 
 
 
-               public void listCuenta(){
-                   
-                   
-               }     
+    public ArrayList<Cuenta> listCuenta() throws SQLException{
+       String sql= "Select * from Cuentas";
+       Statement stmt = conexion.createStatement();
+       ResultSet objrecordset = stmt.executeQuery(sql);
+       ArrayList<Cuenta> arraylistcuenta = new ArrayList<>();
+       
+    while(objrecordset.next()) {
+       Cuenta objCuenta = new Cuenta();
+       objCuenta.setCuentacod(objrecordset.getInt("CuentaCod"));
+       objCuenta.setCuentanom(objrecordset.getString("CuentaDes"));
+       objCuenta.setCuentanivel(objrecordset.getInt("Nivel"));
+       arraylistcuenta.add(objCuenta);
+   }
+       return arraylistcuenta;
+    }     
 
                public void deleteCuenta(){
                    
