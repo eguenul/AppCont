@@ -3,9 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/esteban/proyectos_web/AppCont/web/index.jsp</file>
             <file>file:/home/esteban/proyectos_web/AppCont/web/cuentasview/listcuenta.jsp</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/web/ejemplocss.html</file>
+            <file>file:/home/esteban/proyectos_web/AppCont/web/movimientoview/formregistro.jsp</file>
+            <file>file:/home/esteban/proyectos_web/AppCont/web/cuentasview/addCuenta.jsp</file>
+            <file>file:/home/esteban/proyectos_web/AppCont/web/cuentasview/adminCuenta.jsp</file>
+            <file>file:/home/esteban/proyectos_web/AppCont/web/scripts/listCuenta.js</file>
+            <file>file:/home/esteban/proyectos_web/AppCont/web/cliprovview/divlistacliprov.jsp</file>
+            <file>file:/home/esteban/proyectos_web/AppCont/web/movimientoview/registrodoc.jsp</file>
+            <file>file:/home/esteban/proyectos_web/AppCont/web/scripts/Cuentas.js</file>
         </group>
     </open-files>
 </project-private>

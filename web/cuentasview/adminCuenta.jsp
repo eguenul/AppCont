@@ -15,17 +15,43 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="#">WebSiteName</a>
     </div>
-    <ul class="nav navbar-nav">
+    
+      <!--
+      <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
       <li><a href="#">Page 1</a></li>
       <li><a href="#">Page 2</a></li>
       <li><a href="#">Page 3</a></li>
     </ul>
+      -->
+       <div class="nav navbar-nav navbar-left">
+        <button type="button" class="btn btn-primary navbar-btn"  data-toggle="modal" data-target="#divaddcuenta">
+          <span class="glyphicon glyphicon-plus"></span>
+          Agrega Cuenta
+        </button>
+       </div>
+      
+      <div class="nav navbar-nav navbar-left">
+        <button type="button" class="btn btn-primary navbar-btn">
+          <span class="glyphicon glyphicon-trash"></span>
+          Eliminar Cuenta
+        </button>
+  
+  
+       </div>
+       <div class="nav navbar-nav navbar-right">
+        <button type="button" class="btn btn-primary navbar-btn">
+          <span class="glyphicon glyphicon-plus"></span>
+          Activiteit toevoegen
+        </button>
+       </div>
+  
+  
   </div>
 </nav>
   
      <%@include file="../cuentasview/listcuenta.jsp" %>    
-  
+    <%@include file="../cuentasview/addCuenta.jsp" %>    
 </body>
 </html>   
 <!--     

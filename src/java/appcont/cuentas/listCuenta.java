@@ -41,7 +41,7 @@ public class listCuenta extends HttpServlet {
         CuentaModel objCuentasModel = new CuentaModel();
        ArrayList<Cuenta> arraylistCuenta = objCuentasModel.listCuenta();
        request.getSession().setAttribute("arraylistCuenta", arraylistCuenta);
-       getServletConfig().getServletContext().getRequestDispatcher("/cuentasview/divcuenta.jsp").forward(request,response);
+       getServletConfig().getServletContext().getRequestDispatcher("/cuentasview/adminCuenta.jsp").forward(request,response);
          
           } 
     catch (SQLException | ClassNotFoundException | ParserConfigurationException | SAXException ex) {

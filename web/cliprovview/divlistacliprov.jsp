@@ -11,14 +11,17 @@
 
               
 <table class="table">
-       <thead>  
+         
             
 <tr>
     <th>CODIGO CLIENTE/PROVEEDOR</th>
     <th>RAZON SOCIAL </th>
     <th>RUT</th>
   </tr>
-       </thead>
+  
+  
+  
+  
   <tr>
       <td><input id="CliProvCod2" name="CliProvCod2"  onkeypress="return isNumberKey(event);" onkeyup="if(this.value.length>0){ cargarAjax('cliprov','ACC=BUSQUEDACOD&CliProvCod='+this.value,'contenido');}"></td>
       <td><input id="CliProvRaz2" name="CliProvRaz2" onkeyup="if(this.value.length>0){ cargarAjax('cliprov','ACC=BUSQUEDARAZ&CliProvRaz='+this.value,'contenido');}"></td>
