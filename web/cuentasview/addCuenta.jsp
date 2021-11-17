@@ -9,7 +9,7 @@
       </div>
       <div class="modal-body">
 
-              
+   
 <table class="table table-bordered table-striped">
     <tr>
         <th colspan="2">
@@ -50,7 +50,7 @@
             NIVEL            
         </td>
         <td>
-            <input>     
+            <input id="CuentaNivel">     
          </td>
 </tr>
 
@@ -69,4 +69,5 @@
 </div>
 </div>    
 </div>
-</div>    
+</div>   
+
