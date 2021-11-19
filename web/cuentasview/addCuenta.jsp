@@ -59,7 +59,7 @@
             CUENTA ORIGEN            
         </td>
         <td>
-            <input>     
+            <input id="CuentaOrigen">     
          </td>
 </tr>
 

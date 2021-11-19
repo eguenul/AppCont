@@ -21,68 +21,88 @@ import org.xml.sax.SAXException;
  */
 public class CuentaModel {
     
-       private final Connection conexion;
-    public CuentaModel() throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
+private final Connection conexion;
+
+public CuentaModel() throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
         
            Conexion auxconexion = new Conexion();
            conexion = auxconexion.obtener();
       
         
+}
+
+
+
+    public void addCuenta(int nivelcuenta,int cuentacod, int empresaid) throws SQLException{
+           String sql= "";
+           Statement stmt = conexion.createStatement();
+           stmt.executeQuery(sql);
+
     }
-    
+
+    public int cantCuentas(int cuentaorigen,int nivelcuenta){
 
 
-                public void addCuenta(){
+        return 0;
+    }
 
 
-                }
+    public int genereCodCuenta(){
 
-                public void initCuenta(){
-                     
-                    
-                    
-                }
-                
-                
-                
-                
-
-                public void updateCuenta(){
+        return 0;
+    }
 
 
-                }
 
+
+
+    public void updateCuenta(){
+
+
+    }
 
 
     public ArrayList<Cuenta> listCuenta() throws SQLException{
-       String sql= "Select * from Cuentas";
-       Statement stmt = conexion.createStatement();
-       ResultSet objrecordset = stmt.executeQuery(sql);
-       ArrayList<Cuenta> arraylistcuenta = new ArrayList<>();
-       
-    while(objrecordset.next()) {
-       Cuenta objCuenta = new Cuenta();
-       objCuenta.setCuentacod(objrecordset.getInt("CuentaCod"));
-       objCuenta.setCuentanom(objrecordset.getString("CuentaDes"));
-       objCuenta.setCuentanivel(objrecordset.getInt("Nivel"));
-       arraylistcuenta.add(objCuenta);
-   }
-       return arraylistcuenta;
+           String sql= "Select * from Cuentas";
+           Statement stmt = conexion.createStatement();
+           ResultSet objrecordset = stmt.executeQuery(sql);
+           ArrayList<Cuenta> arraylistcuenta = new ArrayList<>();
+
+        while(objrecordset.next()) {
+           Cuenta objCuenta = new Cuenta();
+           objCuenta.setCuentacod(objrecordset.getInt("CuentaCod"));
+           objCuenta.setCuentanom(objrecordset.getString("CuentaDes"));
+           objCuenta.setCuentanivel(objrecordset.getInt("Nivel"));
+           arraylistcuenta.add(objCuenta);
+          }
+           return arraylistcuenta;
     }     
 
-               public void deleteCuenta(){
-                   
-               
-               
-               
-               }
+    public void deleteCuenta(){
 
-               
-               public int getIDCuenta(){
-                   
-                   
-                   return 0;
-               }
-               
+
+
+
+    }
+
+
+        public int getIDCuenta(){
+
+
+                       return 0;
+        }
+
+    public Cuenta getDataCuenta(){
+
+        Cuenta objCuenta = new Cuenta();
+
+        return objCuenta;
+
+    }
+
+
+
+    
+    
 
 }
