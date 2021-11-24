@@ -22,7 +22,7 @@
     <tr>
     <td align="right" colspan="2">
           
-          <button>Grabar Cuenta</button>
+        <button onclick="addCuentaBd();">Grabar Cuenta</button>
     </td> 
     </tr>     
         
@@ -32,7 +32,7 @@
             CODIGO            
         </td>
         <td>
-            <input>     
+            <input id="CuentaCod">     
          </td>
     </tr>
     
@@ -41,7 +41,7 @@
             NOMBRE            
         </td>
         <td>
-            <input>     
+            <input id="CuentaDes">     
          </td>
 </tr>
 
@@ -59,7 +59,7 @@
             CUENTA ORIGEN            
         </td>
         <td>
-            <input id="CuentaOrigen">     
+            <input id="CuentaPadre">     
          </td>
 </tr>
 

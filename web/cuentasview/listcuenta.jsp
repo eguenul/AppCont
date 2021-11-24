@@ -12,16 +12,13 @@
  
     <%  
         for(Cuenta i:arraylistCuenta){ 
-            int nivelcuenta = 1;
+            
     %> 
 <tr>
- <td  onclick="showAddCuenta('<% out.print(i.getCuentacod()); %>','<% out.print(nivelcuenta); %>');"> <% out.print(i.getCuentacod()); %> -  <%  out.print(i.getCuentanom());   %> 
-       <% nivelcuenta = nivelcuenta+1; %>
+ <td  onclick="showAddCuenta('<% out.print(i.getCuentacod()); %>','<% out.print(i.getCuentanivel()); %>');"> <% out.print(i.getCuentacod()); %> -  <%  out.print(i.getCuentanom());   %> 
+     
  </td> 
  </tr>
- <tr>
- <td onclick="showAddCuenta('<% out.print(i.getCuentacod()); %>','<% out.print(nivelcuenta); %>');">Child node 1</td>
- </tr>      
  <%  } %>
   </table>
       

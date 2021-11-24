@@ -24,24 +24,14 @@ import org.xml.sax.SAXException;
 public class listCuenta extends HttpServlet {
     
     
-@Override
- public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    try {
-        CuentaModel objCuentasModel = new CuentaModel();
-      
-    } catch (SQLException | ClassNotFoundException | ParserConfigurationException | SAXException ex) {
-        Logger.getLogger(listCuenta.class.getName()).log(Level.SEVERE, null, ex);
-    }
- }
-    
     
 @Override
  public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     try {
-        CuentaModel objCuentasModel = new CuentaModel();
-       ArrayList<Cuenta> arraylistCuenta = objCuentasModel.listCuenta();
-       request.getSession().setAttribute("arraylistCuenta", arraylistCuenta);
-       getServletConfig().getServletContext().getRequestDispatcher("/cuentasview/adminCuenta.jsp").forward(request,response);
+         CuentaModel objCuentasModel = new CuentaModel();
+         ArrayList<Cuenta> arraylistCuenta = objCuentasModel.listCuenta();
+         request.getSession().setAttribute("arraylistCuenta", arraylistCuenta);
+         getServletConfig().getServletContext().getRequestDispatcher("/cuentasview/adminCuenta.jsp").forward(request,response);
          
           } 
     catch (SQLException | ClassNotFoundException | ParserConfigurationException | SAXException ex) {

@@ -31,6 +31,24 @@
   
    
    
+      <servlet>
+      <servlet-name>addCuenta</servlet-name>
+      <servlet-class>appcont.cuentas.addCuenta</servlet-class>
+   </servlet>
+  <servlet-mapping>
+      <servlet-name>addCuenta</servlet-name>
+      <url-pattern>/addCuenta</url-pattern>
+   </servlet-mapping>
+  
+  
+   
+   
+   
+   
+   
+   
+   
+   
    <servlet>
       <servlet-name>addMovimiento</servlet-name>
       <servlet-class>appcont.movimiento.addMovimiento</servlet-class>
