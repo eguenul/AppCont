@@ -104,7 +104,7 @@
             </tr>
             
             <%     List<Object[]> arraylistmovimiento = (ArrayList<Object[]>)request.getSession(true).getAttribute("arraylistmovimiento");
-        for(Object[] i:arraylistmovimiento){ %>
+        for(Object[] i:arraylistmovimiento){  %>
             <tr>
                 <td>
                     <input size="8" value="<% out.print(i[2]); %>" readonly="yes">     

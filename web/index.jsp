@@ -48,14 +48,14 @@ if(objEmpresa.getEmpresaid()==0){
             MANTENCION<b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
-          <li><a href=empresa>EMPRESAS</a></li>
+         <li><a href="empresa">EMPRESAS</a></li>
          <li><a href="cliprov">CLIENTE/PROVEEDOR</a></li>
-           <li><a href="cesionario">CESIONARIOS</a></li>
-          <li><a href="usuario">USUARIOS</a></li>
-          <li><a href="correlativo">CORRELATIVOS</a></li>
-           <li><a href="setpass">CAMBIO PASSWORD ADMINISTRADOR</a></li>
+         <li><a href="usuario">USUARIOS</a></li>
+         <li><a href="correlativo">CORRELATIVOS</a></li>
+         <li><a href="setpass">CAMBIO PASSWORD ADMINISTRADOR</a></li>
      </ul>
        </li>
+       <li class="dropdown"><a href="listCuenta"><span class="glyphicon glyphicon-list-alt"></span> PLAN DE CUENTAS</a></li>      
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
            <span class="glyphicon glyphicon-tasks">  
@@ -68,16 +68,11 @@ if(objEmpresa.getEmpresaid()==0){
                 <li><a href="getVenta">IMPORTACION DTE VENTA</a></li>
                 <li><a href="getCompra">IMPORTACION DTE COMPRA</a></li>
                 <li><a href="centventa">CENTRALIZACION VENTAS</a></li>
-            
-                <li><a href="centcompra">CENTRALIZACION COMPRAS</a></li>
-                
+                <li><a href="centcompra">CENTRALIZACION COMPRAS</a></li> 
                 <li><a href="selempresa">SELECCION EMPRESA</a></li>
                 
             </ul>
        </li>
-       
-        
-       
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
            <span class="glyphicon glyphicon-tasks">  
@@ -101,16 +96,15 @@ if(objEmpresa.getEmpresaid()==0){
            </span>
           REPORTES<b class="caret"></b>
           </a>
-            <ul class="dropdown-menu">
-                <li><a href="getVenta">INGRESO DE VENTAS</a></li>
-                <li><a href="getVenta">INGRESO COMPRAS</a></li>
-                <li><a href="getVenta">IMPORTACION DTE VENTA</a></li>
-                <li><a href="getCompra">IMPORTACION DTE COMPRA</a></li>
-                <li><a href="getCompra">CENTRALIZACION</a></li>
-                
-                <li><a href="selempresa">SELECCION EMPRESA</a></li>
-                
-            </ul>
+           <ul class="dropdown-menu">
+              <li><a href="getVenta">BALANCE CLASIFICADO</a></li>
+              <li><a href="getVenta">BALANCE TRIBUTARIO</a></li>
+              <li><a href="getVenta">ESTADO DE RESULTADO</a></li>
+              <li><a href="getVenta">LIBRO DIARIO</a></li>
+              <li><a href="getVenta">LIBRO MAYOR</a></li>
+              <li><a href="getVenta">LIBRO DE COMPRAS</a></li>
+              <li><a href="getVenta">LIBRO DE VENTAS</a></li>
+           </ul>
        </li>
        
        

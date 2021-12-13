@@ -74,38 +74,24 @@ public CuentaModel() throws SQLException, ClassNotFoundException, ParserConfigur
 
 
     public ArrayList<Cuenta> listCuenta() throws SQLException{
-           String sql= "Select * from Cuentas where Nivel=1 Order By CuentaCod  ASC";
+           String sql= "Select * from Cuentas Order By CuentaCod  ASC";
            Statement stmt = conexion.createStatement();
            ResultSet objrecordset = stmt.executeQuery(sql);
            ArrayList<Cuenta> arraylistcuenta = new ArrayList<>();
 
-        while(objrecordset.next()) {
-           Cuenta objCuenta = new Cuenta();
-           objCuenta.setCuentacod(objrecordset.getInt("CuentaCod"));
-           objCuenta.setCuentanom(objrecordset.getString("CuentaDes"));
-           objCuenta.setCuentanivel(objrecordset.getInt("Nivel"));
-           arraylistcuenta.add(objCuenta);
-           /* listo las subcuentas */
-           int auxcuentacod = objrecordset.getInt("CuentaCod");
-           int auxcuentanivel = objrecordset.getInt("Nivel");
-           auxcuentanivel= auxcuentanivel+1;
-              String sql2= "Select * from Cuentas Where CuentaPadre="+String.valueOf(auxcuentacod);
-              System.out.print(sql2); 
-              Statement stmt2 = conexion.createStatement();
-              ResultSet objrecordset2 = stmt2.executeQuery(sql2);
-           
-               while(objrecordset2.next()){
+       
+               while(objrecordset.next()){
                    
                     Cuenta objCuenta2 = new Cuenta();
-                    objCuenta2.setCuentacod(objrecordset2.getInt("CuentaCod"));
-                    objCuenta2.setCuentanom(objrecordset2.getString("CuentaDes"));
-                    objCuenta2.setCuentanivel(objrecordset2.getInt("Nivel"));
+                    objCuenta2.setCuentacod(objrecordset.getInt("CuentaCod"));
+                    objCuenta2.setCuentanom(objrecordset.getString("CuentaDes"));
+                    objCuenta2.setCuentanivel(objrecordset.getInt("Nivel"));
                     arraylistcuenta.add(objCuenta2);
                }
                
                
           
-          }
+         
            return arraylistcuenta;
     }     
 
@@ -137,7 +123,10 @@ public CuentaModel() throws SQLException, ClassNotFoundException, ParserConfigur
 
     }
 
-
+public void clonarCuenta(){
+    
+    
+}
 
     
     
