@@ -40,9 +40,10 @@ public String obtieneCompras(String login, String clave,String rutempresa,String
   
  Semilla objsemilla = new Semilla();
  
- String valorsemilla =  objsemilla.getSeed(serverauth);
+ String valorsemilla =  objsemilla.getSeed("palena.sii.cl");
  
- Token objtoken = new Token(serverauth);
+ Token objtoken = new Token("palena.sii.cl");
+System.out.print(pathcertificado);
  String valortoken =  objtoken.getToken(valorsemilla,pathcertificado,clave,"");
 
     

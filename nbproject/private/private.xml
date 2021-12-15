@@ -3,13 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/esteban/proyectos_web/AppCont/web/cuentasview/listcuenta.jsp</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/web/centralizaview/centraliza.jsp</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/web/cuentasview/addCuenta.jsp</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/cuentas/addCuenta.java</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/web/WEB-INF/web.xml</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/web/scripts/addCuenta.js</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/cuentas/CuentaModel.java</file>
+            <file>file:/home/esteban/proyectos_web/AppCont/web/index.jsp</file>
+            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/include/ConfigEnvirontment.java</file>
+            <file>file:/home/esteban/proyectos_web/AppCont/web/WEB-INF/appcontconf.xml</file>
+            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/cliprov/CliProvServlet.java</file>
+            <file>file:/home/esteban/proyectos_web/AppCont/web/WEB-INF/appcont.properties</file>
         </group>
     </open-files>
 </project-private>
