@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,11 +23,16 @@ public class EmpresaServlet extends HttpServlet {
  public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
      try {
          String acc = request.getParameter("ACC");
-         
+       
+         ServletContext context = request.getServletContext();
+         String pathservlet = context.getRealPath("/");
+
+            
            Empresa objEmpresa = new Empresa();
-           
-           EmpresaModel objEmpresaModel = new EmpresaModel();
-         switch(acc){
+          
+           EmpresaModel objEmpresaModel = new EmpresaModel(pathservlet);
+         
+           switch(acc){
              
              case "GRABAR":
                  
@@ -224,6 +231,10 @@ public class EmpresaServlet extends HttpServlet {
 @Override
  public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+      ServletContext context = request.getServletContext();
+         String pathservlet = context.getRealPath("/");
+
+     
        if(request.getSession().getAttribute("loginauth")==null){
          request.getRequestDispatcher("login").forward(request, response); 
        }
@@ -252,7 +263,7 @@ public class EmpresaServlet extends HttpServlet {
     request.getSession().setAttribute("Empresa", objEmpresa);
     request.getSession().setAttribute("acc", "GRABAR");
  
-    EmpresaModel objEmpresaModel = new EmpresaModel();
+    EmpresaModel objEmpresaModel = new EmpresaModel(pathservlet);
     ArrayList<Empresa> arraylistempresa = objEmpresaModel.listEmpresa2();
     request.getSession().setAttribute("arraylistempresa", arraylistempresa);
     getServletConfig().getServletContext().getRequestDispatcher("/empresaview/addempresa.jsp").forward(request,response);

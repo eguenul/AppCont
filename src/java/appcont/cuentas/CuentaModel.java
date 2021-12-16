@@ -23,9 +23,9 @@ public class CuentaModel {
     
 private final Connection conexion;
 
-public CuentaModel() throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
+public CuentaModel(String pathservlet) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
         
-           Conexion auxconexion = new Conexion();
+           Conexion auxconexion = new Conexion(pathservlet);
            conexion = auxconexion.obtener();
       
         

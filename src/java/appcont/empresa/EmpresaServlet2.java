@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,7 +27,13 @@ public class EmpresaServlet2 extends HttpServlet{
 
 @Override
  public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+ 
+     ServletContext context = request.getServletContext();
+     String pathservlet = context.getRealPath("/");
 
+     
+     
+     
      if(request.getSession().getAttribute("loginauth")==null){
          request.getRequestDispatcher("login").forward(request, response); 
        }
@@ -34,7 +41,7 @@ public class EmpresaServlet2 extends HttpServlet{
     try {
         
       
-        EmpresaModel objEmpresaModel = new EmpresaModel();
+        EmpresaModel objEmpresaModel = new EmpresaModel(pathservlet);
         ArrayList<Empresa> arraylistempresa = objEmpresaModel.listEmpresa();
         request.getSession().setAttribute("arraylistempresa", arraylistempresa);
         getServletConfig().getServletContext().getRequestDispatcher("/empresaview/selectempresa.jsp").forward(request,response);
@@ -47,9 +54,11 @@ public class EmpresaServlet2 extends HttpServlet{
 
 @Override
  public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
- 
+  ServletContext context = request.getServletContext();
+  String pathservlet = context.getRealPath("/");
+
     try {
-        EmpresaModel objEmpresaModel = new EmpresaModel();
+        EmpresaModel objEmpresaModel = new EmpresaModel(pathservlet);
         int empresaid = Integer.parseInt(request.getParameter("EmpresaId"));
         Empresa objEmpresa = objEmpresaModel.getData(empresaid);
         request.getSession().setAttribute("Empresa",objEmpresa);

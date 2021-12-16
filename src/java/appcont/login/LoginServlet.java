@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,11 +23,13 @@ import org.xml.sax.SAXException;
 public class LoginServlet  extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-   
+    ServletContext context = request.getServletContext();
+         String pathservlet = context.getRealPath("/");
+
       try {
           String login = request.getParameter("login");
           String clave = request.getParameter("clave");
-          LoginModel objLoginModel = new LoginModel();
+          LoginModel objLoginModel = new LoginModel(pathservlet);
           if( objLoginModel.authLogin(login, clave)==true){
               
               
@@ -35,7 +38,7 @@ public class LoginServlet  extends HttpServlet {
               
               /* BUSCO SI EXISTE CERTIFICADO DIGITAL */
              
-              ConfigEnvirontment objConfig = new ConfigEnvirontment();
+              ConfigEnvirontment objConfig = new ConfigEnvirontment(pathservlet);
                          
               String sFichero = objConfig.getPathcert()+login;
               System.out.print(sFichero);
@@ -70,7 +73,15 @@ public class LoginServlet  extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
   
    if(request.getSession().getAttribute("loginauth") != "yes"){
-      getServletConfig().getServletContext().getRequestDispatcher("/loginview/login.jsp").forward(request,response);   
+   
+       ServletContext context = request.getServletContext();
+       String pathservlet = context.getRealPath("/");
+
+       System.out.print(pathservlet);  
+       
+       getServletConfig().getServletContext().getRequestDispatcher("/loginview/login.jsp").forward(request,response);   
+   
+   
    }else{
        
        response.sendRedirect("index"); 

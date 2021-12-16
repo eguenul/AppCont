@@ -33,8 +33,8 @@ public class EmpresaModel {
     private String empresacom;
     private String oficinasii;
     
-    public EmpresaModel() throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
-        Conexion auxconexion = new Conexion();
+    public EmpresaModel(String pathservlet) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
+        Conexion auxconexion = new Conexion(pathservlet);
         conexion = auxconexion.obtener();
       
   }  

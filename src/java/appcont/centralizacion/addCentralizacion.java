@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +29,10 @@ public class addCentralizacion extends HttpServlet{
 @Override
 public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
  
-    MovimientoModel objMovimientoModel = new MovimientoModel(31);
+    ServletContext context = request.getServletContext();
+         String pathservlet = context.getRealPath("/");
+
+    MovimientoModel objMovimientoModel = new MovimientoModel(31,pathservlet);
     /*
     ArrayList<Object> objListMovimiento =  objMovimientoModel.listMovimientos();
     request.getSession().setAttribute("objListMovimiento", objListMovimiento);
@@ -41,7 +45,10 @@ public void doPost(HttpServletRequest request, HttpServletResponse response) thr
 public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
   
     try {
-        MovimientoModel objMovimientoModel = new MovimientoModel(31);
+        ServletContext context = request.getServletContext();
+         String pathservlet = context.getRealPath("/");
+
+        MovimientoModel objMovimientoModel = new MovimientoModel(31,pathservlet);
         ArrayList<Object> arrayObjetos = objMovimientoModel.listMovimientos();
         request.getSession().setAttribute("arraylistmovimiento", arrayObjetos);
         getServletConfig().getServletContext().getRequestDispatcher("/centralizaview/centraliza.jsp").forward(request,response);

@@ -21,8 +21,8 @@ import org.xml.sax.SAXException;
 public class LoginModel {
     Connection objconexion;
     
-    public LoginModel() throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
-          Conexion auxconexion = new Conexion();
+    public LoginModel(String pathservlet) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
+          Conexion auxconexion = new Conexion(pathservlet);
           this.objconexion = auxconexion.obtener();
         
     }

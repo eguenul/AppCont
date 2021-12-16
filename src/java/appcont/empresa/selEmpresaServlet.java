@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,14 +26,17 @@ public class selEmpresaServlet extends HttpServlet {
     
  @Override
  public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-if(request.getSession().getAttribute("loginauth")==null){
+ ServletContext context = request.getServletContext();
+         String pathservlet = context.getRealPath("/");
+
+     if(request.getSession().getAttribute("loginauth")==null){
          request.getRequestDispatcher("login").forward(request, response); 
        }
  
     try {
         
       
-        EmpresaModel objEmpresaModel = new EmpresaModel();
+        EmpresaModel objEmpresaModel = new EmpresaModel(pathservlet);
         ArrayList<Empresa> arraylistempresa = objEmpresaModel.listEmpresa();
         request.getSession().setAttribute("arraylistempresa", arraylistempresa);
         getServletConfig().getServletContext().getRequestDispatcher("/empresaview/selectempresa.jsp").forward(request,response);

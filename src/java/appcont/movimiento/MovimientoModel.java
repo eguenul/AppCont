@@ -26,19 +26,20 @@ import org.xml.sax.SAXException;
 public class MovimientoModel {
 
 private final int empresaid;
-    
-public MovimientoModel(int empresaid){
+private final String pathservlet;    
+public MovimientoModel(int empresaid, String pathservlet){
  this.empresaid = empresaid;
+ this.pathservlet = pathservlet;
 }
         
     
 
 public boolean searchDocSii(String cliprovrut, String codsii, String folio) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
 
-   Conexion objconexion = new Conexion();
+   Conexion objconexion = new Conexion(pathservlet);
     try (Connection auxconexion = objconexion.obtener()) {
-        CliProvModel objCliProvModel = new CliProvModel(this.empresaid);
-        DocumentoModel objDocumentoModel = new DocumentoModel();
+        CliProvModel objCliProvModel = new CliProvModel(this.empresaid,pathservlet);
+        DocumentoModel objDocumentoModel = new DocumentoModel(pathservlet);
         int cliprovid = objCliProvModel.getIdCliProv(cliprovrut);
         int iddoc = objDocumentoModel.getId(codsii);
         
@@ -65,8 +66,8 @@ public boolean searchDocSii(String cliprovrut, String codsii, String folio) thro
 public void addDocSii(String cliprovrut, String codsii, String folio, int tipomovimiento) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
 
 if (searchDocSii(cliprovrut, codsii, folio)==true){    
-   CliProvModel objCliProvModel = new CliProvModel(this.empresaid);
-   DocumentoModel objDocumentoModel = new DocumentoModel();
+   CliProvModel objCliProvModel = new CliProvModel(this.empresaid,pathservlet);
+   DocumentoModel objDocumentoModel = new DocumentoModel(pathservlet);
    /*
    int cliprovid = objCliProvModel.getIdCliProv(cliprovrut);
    int iddoc = objDocumentoModel.getId(codsii);
@@ -78,7 +79,7 @@ if (searchDocSii(cliprovrut, codsii, folio)==true){
 }
 
 public void addDoc(Movimiento objMovimiento, int codTipoMovimiento) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
- Conexion objconexion = new Conexion();
+ Conexion objconexion = new Conexion(pathservlet);
  Connection conexion = objconexion.obtener();
  
 CliProv objCliProv = objMovimiento.getCliprov();
@@ -130,7 +131,7 @@ String sql = "INSERT INTO Movimiento(EmpresaId,CliProvId, FechaDoc,NumDoc,"
 }
 
 public int get_idTipoMovmiento(String desMovimiento) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
-    Conexion objconexion = new Conexion();
+    Conexion objconexion = new Conexion(pathservlet);
     Connection auxconexion = objconexion.obtener();
      Statement stmt = auxconexion.createStatement();
         
@@ -146,7 +147,7 @@ public ArrayList<Object> listMovimientos() throws SQLException, ClassNotFoundExc
     
     
     
-    Conexion objconexion = new Conexion();
+    Conexion objconexion = new Conexion(pathservlet);
     Connection auxconexion = objconexion.obtener();
     Statement stmt = auxconexion.createStatement();
     

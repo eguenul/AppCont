@@ -18,17 +18,17 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 public class CliProvModel {
 private final int empresaid;
-    
-public CliProvModel(int empresaid) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
+private final String pathservlet;     
+public CliProvModel(int empresaid,String pathservlet) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
 this.empresaid = empresaid;   
-    
+    this.pathservlet = pathservlet;
 }
     
     
 public ArrayList<CliProv> listaCliProv(int indice) throws SQLException{
    
     try {
-        Conexion auxconexion = new Conexion();
+        Conexion auxconexion = new Conexion(pathservlet);
         Connection objconexion = auxconexion.obtener();
         
         
@@ -65,7 +65,7 @@ public CliProv searchCliProv(int cliprovcod) throws SQLException{
     
     try {
         CliProv objCliProv = new CliProv();
-        Conexion auxconexion = new Conexion();
+        Conexion auxconexion = new Conexion(pathservlet);
         Connection objconexion = auxconexion.obtener();
         
         Statement stm = objconexion.createStatement();
@@ -98,7 +98,7 @@ return null;
 
 public void addCliProv(CliProv objCliProv) throws SQLException{
     try {
-        Conexion auxconexion = new Conexion();
+        Conexion auxconexion = new Conexion(pathservlet);
         Connection objconexion = auxconexion.obtener();     
         int cliprovcod = objCliProv.getCliprovcod();
         String cliprovraz = objCliProv.getCliprovraz();
@@ -123,7 +123,7 @@ public void addCliProv(CliProv objCliProv) throws SQLException{
 }
 
 public void updateCliProv(CliProv objCliProv) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
-        Conexion auxconexion = new Conexion();
+        Conexion auxconexion = new Conexion(pathservlet);
         Connection objconexion = auxconexion.obtener();     
         int cliprovcod = objCliProv.getCliprovcod();
         String cliprovraz = objCliProv.getCliprovraz();
@@ -162,7 +162,7 @@ public void updateCliProv(CliProv objCliProv) throws SQLException, ClassNotFound
 
  private void updateCorrelativo() throws SQLException{
     try {
-        Conexion auxconexion = new Conexion();
+        Conexion auxconexion = new Conexion(pathservlet);
         Connection objconexion = auxconexion.obtener();
         
         String sql = "Update Correlativo SET ClienteProveedorCod=ClienteProveedorCod+1 where EmpresaId="+String.valueOf(empresaid);
@@ -175,7 +175,7 @@ public void updateCliProv(CliProv objCliProv) throws SQLException, ClassNotFound
 
 public int getCorrelativo() throws SQLException{
     try {
-        Conexion auxconexion = new Conexion();
+        Conexion auxconexion = new Conexion(pathservlet);
         Connection objconexion = auxconexion.obtener();
         
         int correlativo =  0;
@@ -196,7 +196,7 @@ public int getCorrelativo() throws SQLException{
 
 public ArrayList<CliProv> searchCod(int cliprovcod) throws SQLException, ClassNotFoundException{
     try {
-        Conexion auxconexion = new Conexion();
+        Conexion auxconexion = new Conexion(pathservlet);
         Connection objconexion = auxconexion.obtener();
         
         
@@ -231,7 +231,7 @@ public ArrayList<CliProv> searchCod(int cliprovcod) throws SQLException, ClassNo
 
 public ArrayList<CliProv> searchRaz(String cliprovraz) throws SQLException, ClassNotFoundException{  
     try {
-        Conexion auxconexion = new Conexion();
+        Conexion auxconexion = new Conexion(pathservlet);
         Connection objconexion = auxconexion.obtener();
         ArrayList<CliProv> arraylista = new ArrayList();
         String sql ="Select * from CliProv where CliProvRaz LIKE '"+cliprovraz+"%' and EmpresaId="+String.valueOf(empresaid);
@@ -263,7 +263,7 @@ public ArrayList<CliProv> searchRaz(String cliprovraz) throws SQLException, Clas
 public ArrayList<CliProv> searchRut(String cliprovrut) throws SQLException, ClassNotFoundException{
        
     try {
-        Conexion auxconexion = new Conexion();
+        Conexion auxconexion = new Conexion(pathservlet);
         Connection objconexion = auxconexion.obtener();
         
         
@@ -295,7 +295,7 @@ public ArrayList<CliProv> searchRut(String cliprovrut) throws SQLException, Clas
 
 public int getIdCliProv(String cliprovrut) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
     
-        Conexion auxconexion = new Conexion();
+        Conexion auxconexion = new Conexion(pathservlet);
         Connection objconexion = auxconexion.obtener();
         
         

@@ -19,10 +19,15 @@ import org.xml.sax.SAXException;
  * @author esteban
  */
 public class SetPassModel {
+   private final String pathservlet;
+    public SetPassModel(String pathservlet){
+        this.pathservlet = pathservlet;
+        
+    }
     
 public void setPassAdmin(String password) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{    
   
- Conexion auxconexion = new Conexion();
+ Conexion auxconexion = new Conexion(pathservlet);
  Connection objconexion = auxconexion.obtener();
   
  String sql = "Update Usuario set UsuarioPass='"+ password+  "' where UsuarioLogin='admin'";
@@ -32,7 +37,7 @@ public void setPassAdmin(String password) throws SQLException, ClassNotFoundExce
 
 
 public boolean validaPass(String password) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
- Conexion auxconexion = new Conexion();
+ Conexion auxconexion = new Conexion(pathservlet);
  Connection objconexion = auxconexion.obtener();
   
  String sql = "Select * from Usuario where UsuarioPass='"+ password+  "' and UsuarioLogin='admin'";

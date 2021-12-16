@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,8 +31,10 @@ public class addMovimiento extends HttpServlet{
     @Override  
   public void  doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         try {
-            
-            
+            ServletContext context = request.getServletContext();
+         String pathservlet = context.getRealPath("/");
+
+          
             request.getSession().setAttribute("CliProvCod", "");
             request.getSession().setAttribute("CliProvRut", "");
             request.getSession().setAttribute("CliProvRaz", "");
@@ -46,7 +49,7 @@ public class addMovimiento extends HttpServlet{
             
             int empresaid = (int) request.getSession().getAttribute("empresaid");
             request.getSession().setAttribute("modulo","addMovimiento");
-            CliProvModel objCliProvModel = new CliProvModel(empresaid);
+            CliProvModel objCliProvModel = new CliProvModel(empresaid,pathservlet);
             ArrayList<CliProv> arraylistcliprov = objCliProvModel.listaCliProv(0);
             request.getSession().setAttribute("arraylistcliprov", arraylistcliprov);
             getServletConfig().getServletContext().getRequestDispatcher("/movimientoview/registrodoc.jsp").forward(request,response);
@@ -70,11 +73,13 @@ public void  doPost(HttpServletRequest request, HttpServletResponse response) th
   
   
         try{
-            
+              ServletContext context = request.getServletContext();
+         String pathservlet = context.getRealPath("/");
+
             int empresaid = (int) request.getSession().getAttribute("empresaid");
             request.getSession().setAttribute("modulo","addMovimiento");
          
-            CliProvModel objCliProvModel = new CliProvModel(empresaid);
+            CliProvModel objCliProvModel = new CliProvModel(empresaid,pathservlet);
            /* ArrayList<CliProv> arraylistcliprov = objCliProvModel.listaCliProv(0); */
         
              String acc = request.getParameter("ACC");
@@ -132,7 +137,7 @@ public void  doPost(HttpServletRequest request, HttpServletResponse response) th
                      int tipodocid = Integer.parseInt(request.getParameter("TipoDoc").trim());
                      
                      Documento objDoc = new Documento();
-                     DocumentoModel objDocModel = new DocumentoModel();   
+                     DocumentoModel objDocModel = new DocumentoModel(pathservlet);   
                      objDoc = objDocModel.getObjDoc(tipodocid);
                      
                      objCliProv = objCliProvModel.searchCliProv(cliprovcod);
@@ -166,7 +171,7 @@ public void  doPost(HttpServletRequest request, HttpServletResponse response) th
                      objMovimiento.setCliprov(objCliProv);
                      objMovimiento.setTipodocumento(objDoc);
                      
-                     MovimientoModel objMovimientoModel = new MovimientoModel(empresaid);
+                     MovimientoModel objMovimientoModel = new MovimientoModel(empresaid, pathservlet);
                    
                      String desTipomovimiento = (String) request.getSession().getAttribute("tipo_movimiento");
                      int codTipoMovimiento = objMovimientoModel.get_idTipoMovmiento(desTipomovimiento.trim());

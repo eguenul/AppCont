@@ -20,14 +20,21 @@ import java.sql.ResultSet;
  * @author esteban
  */
 public class Funciones {
+    
+    private final String pathservlet;
+    public Funciones(String pathservlet){
+        this.pathservlet = pathservlet;
+        
+    }
+    
     public boolean buscaFolios(int empresaid, String codsii) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
     
         Connection objconexion;
         String sql;
         sql="Select EmpresaRut from Empresa where EmpresaId="+String.valueOf(empresaid);
         
-        ConfigEnvirontment objconfig = new ConfigEnvirontment();
-        Conexion obj= new Conexion();
+        ConfigEnvirontment objconfig = new ConfigEnvirontment(pathservlet);
+        Conexion obj= new Conexion(pathservlet);
         objconexion = obj.obtener();
         Statement stm = objconexion.createStatement();
         String pathcaf ="";

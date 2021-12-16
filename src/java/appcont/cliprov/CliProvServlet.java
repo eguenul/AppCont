@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +26,9 @@ public class CliProvServlet extends HttpServlet {
 
     @Override
      public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       
+       ServletContext context = request.getServletContext();
+         String pathservlet = context.getRealPath("/");
+
          
       
        if(request.getSession().getAttribute("loginauth")==null){
@@ -45,7 +48,7 @@ public class CliProvServlet extends HttpServlet {
              
               
               CliProvModel objCliProvModel;
-              objCliProvModel = new CliProvModel(empresaid);
+              objCliProvModel = new CliProvModel(empresaid,pathservlet);
               ArrayList<CliProv> arraylistcliprov = objCliProvModel.listaCliProv(0);          
               
               request.getSession().setAttribute("arraylistcliprov",arraylistcliprov);
@@ -81,6 +84,11 @@ public class CliProvServlet extends HttpServlet {
          
          String modulo = (String) request.getSession().getAttribute("modulo");
          request.getSession().setAttribute("modulo", modulo);
+         
+         ServletContext context = request.getServletContext();
+         String pathservlet = context.getRealPath("/");
+
+         
          try {
              
               if("UPDATE".equals(acc)){ 
@@ -97,7 +105,7 @@ public class CliProvServlet extends HttpServlet {
             
              if(comonFunc.validaRut(objCliProv.getCliprovrut())==true){
                 CliProvModel objCliProvModel;           
-                objCliProvModel = new CliProvModel(empresaid);
+                objCliProvModel = new CliProvModel(empresaid,pathservlet);
                 objCliProvModel.updateCliProv(objCliProv);                    
                 /*
                 request.getSession().setAttribute("titulo","OPERACION EXITOSA");
@@ -144,7 +152,7 @@ public class CliProvServlet extends HttpServlet {
              objCliProv.setCliprovema(request.getParameter("CliProvEma"));
              if(comonFunc.validaRut(objCliProv.getCliprovrut())==true){
                 CliProvModel objCliProvModel;           
-                objCliProvModel = new CliProvModel(empresaid);
+                objCliProvModel = new CliProvModel(empresaid,pathservlet);
                 objCliProv.setCliprovcod(objCliProvModel.getCorrelativo());
                 objCliProvModel.addCliProv(objCliProv);                    
                 /*
@@ -201,7 +209,7 @@ public class CliProvServlet extends HttpServlet {
         */
         if("REFRESH".equals(acc)){    
            CliProvModel objCliProvModel;
-           objCliProvModel = new CliProvModel(empresaid);
+           objCliProvModel = new CliProvModel(empresaid,pathservlet);
            ArrayList<CliProv> arraylistcliprov = objCliProvModel.listaCliProv(0);           
            request.getSession().setAttribute("arraylistcliprov",arraylistcliprov);
            getServletConfig().getServletContext().getRequestDispatcher("/cliprovview/divlistacliprov2.jsp").forward(request,response);    
@@ -217,7 +225,7 @@ public class CliProvServlet extends HttpServlet {
            
          }else{
             int cliprovcod = Integer.parseInt(request.getParameter("CliProvCod"));
-           CliProvModel objCliProvModel = new CliProvModel(empresaid);
+           CliProvModel objCliProvModel = new CliProvModel(empresaid,pathservlet);
            ArrayList<CliProv> arraylistcliprov = objCliProvModel.searchCod(cliprovcod);
            request.getSession().setAttribute("arraylistcliprov", arraylistcliprov);
            getServletConfig().getServletContext().getRequestDispatcher("/cliprovview/divlistacliprov2.jsp").forward(request,response);
@@ -230,7 +238,7 @@ public class CliProvServlet extends HttpServlet {
            
          }else{
             String cliprovraz = request.getParameter("CliProvRaz");
-           CliProvModel objCliProvModel = new CliProvModel(empresaid);
+           CliProvModel objCliProvModel = new CliProvModel(empresaid,pathservlet);
            ArrayList<CliProv> arraylistcliprov = objCliProvModel.searchRaz(cliprovraz);
            request.getSession().setAttribute("arraylistcliprov", arraylistcliprov);
            getServletConfig().getServletContext().getRequestDispatcher("/cliprovview/divlistacliprov2.jsp").forward(request,response);
@@ -249,7 +257,7 @@ public class CliProvServlet extends HttpServlet {
            String cliprovrut = request.getParameter("CliProvRut");
            
             if(comonFunc.validaRut(cliprovrut)==true){
-               CliProvModel objCliProvModel = new CliProvModel(empresaid);
+               CliProvModel objCliProvModel = new CliProvModel(empresaid,pathservlet);
                ArrayList<CliProv> arraylistcliprov = objCliProvModel.searchRut(cliprovrut);
                request.getSession().setAttribute("arraylistcliprov", arraylistcliprov);
                getServletConfig().getServletContext().getRequestDispatcher("/cliprovview/divlistacliprov2.jsp").forward(request,response);
@@ -294,7 +302,7 @@ public class CliProvServlet extends HttpServlet {
             
             
             try {
-                CliProvModel objCliProvModel = new CliProvModel(empresaid);
+                CliProvModel objCliProvModel = new CliProvModel(empresaid,pathservlet);
                 
                  int cliprovcod = Integer.parseInt(request.getParameter("CliProvCod"));
                 

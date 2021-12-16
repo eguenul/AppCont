@@ -2,7 +2,11 @@
 <%@page import="appcont.documento.Documento"%>
 <%@page import="appcont.documento.DocumentoModel"%>
 
-<%    DocumentoModel objDocumentoModel = new DocumentoModel();
+<%    
+    ServletContext context = request.getServletContext();
+         String pathservlet = context.getRealPath("/");
+    
+    DocumentoModel objDocumentoModel = new DocumentoModel(pathservlet);
       List<Documento> arraylistdocumento = objDocumentoModel.listDocuments();
       String estadodoc = (String) request.getSession().getAttribute("ESTADODOC");
 

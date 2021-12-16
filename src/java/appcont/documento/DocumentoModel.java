@@ -14,8 +14,8 @@ public class DocumentoModel {
 
     Connection objconexion; 
 
-public DocumentoModel() throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
-  Conexion auxconexion = new Conexion();
+public DocumentoModel(String pathservlet) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
+  Conexion auxconexion = new Conexion(pathservlet);
   this.objconexion = auxconexion.obtener();
     
 }

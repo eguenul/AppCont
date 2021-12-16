@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +30,9 @@ public class addCuenta extends HttpServlet {
 @Override
  public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
  
- 
+ ServletContext context = request.getServletContext();
+         String pathservlet = context.getRealPath("/");
+
    
         
     try {
@@ -38,7 +41,7 @@ public class addCuenta extends HttpServlet {
          String cuentapadre = request.getParameter("CuentaPadre");
          
          
-        CuentaModel objCuentasModel = new CuentaModel();
+        CuentaModel objCuentasModel = new CuentaModel(pathservlet);
         ArrayList<Cuenta> arraylistCuenta = objCuentasModel.listCuenta();
         
         int cantidadCuenta = objCuentasModel.cantCuentas(parseInt(cuentapadre), parseInt(cuentanivel));

@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -41,13 +42,15 @@ public class getVenta extends HttpServlet {
   
    @Override  
   public void  doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-  
+   ServletContext context = request.getServletContext();
+         String pathservlet = context.getRealPath("/");
+
    
      try {
          String acc = request.getParameter("ACC");
          
          int empresaid = (int) request.getSession().getAttribute("empresaid");
-         EmpresaModel objEmpresaModel = new EmpresaModel();
+         EmpresaModel objEmpresaModel = new EmpresaModel(pathservlet);
          Empresa objEmpresa = objEmpresaModel.getData(empresaid);
          String rutempresa = objEmpresa.getEmpresarut();
          

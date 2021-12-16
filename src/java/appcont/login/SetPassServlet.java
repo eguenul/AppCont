@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +26,9 @@ public class SetPassServlet extends HttpServlet {
     
 @Override 
 public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        if(request.getSession().getAttribute("loginauth")==null){
+      
+    
+    if(request.getSession().getAttribute("loginauth")==null){
          request.getRequestDispatcher("login").forward(request, response); 
 }else{
             String login = (String) request.getSession().getAttribute("login");
@@ -47,9 +50,12 @@ public void doGet(HttpServletRequest request, HttpServletResponse response) thro
 public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
   
     try {
+        ServletContext context = request.getServletContext();
+         String pathservlet = context.getRealPath("/");
+
         String passwordant = request.getParameter("passwordant");
         String passwordnueva = request.getParameter("passwordnueva");
-        SetPassModel objSetPassModel = new SetPassModel();
+        SetPassModel objSetPassModel = new SetPassModel(pathservlet);
         
         if( objSetPassModel.validaPass(passwordant)==true){
              objSetPassModel.setPassAdmin(passwordnueva);

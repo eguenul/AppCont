@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,8 +28,11 @@ public class listCuenta extends HttpServlet {
     
 @Override
  public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    try {
-         CuentaModel objCuentasModel = new CuentaModel();
+    ServletContext context = request.getServletContext();
+         String pathservlet = context.getRealPath("/");
+
+     try {
+         CuentaModel objCuentasModel = new CuentaModel(pathservlet);
          ArrayList<Cuenta> arraylistCuenta = objCuentasModel.listCuenta();
          request.getSession().setAttribute("arraylistCuenta", arraylistCuenta);
          getServletConfig().getServletContext().getRequestDispatcher("/cuentasview/adminCuenta.jsp").forward(request,response);
