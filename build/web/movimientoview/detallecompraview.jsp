@@ -4,7 +4,10 @@
 <%@page import="java.util.ArrayList"%>
 <%
    List<DetalleCompra> arraydetallecompra = (ArrayList<DetalleCompra>) request.getSession().getAttribute("arraydetallecompra");
-   DocumentoModel objdocumentomodel = new DocumentoModel();
+   
+     ServletContext context = request.getServletContext();
+     String pathservlet = context.getRealPath("/");
+   DocumentoModel objdocumentomodel = new DocumentoModel(pathservlet);
 %>
 
 <table  class="table table-bordered table-striped">

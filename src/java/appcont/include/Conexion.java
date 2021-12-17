@@ -26,7 +26,7 @@ public class Conexion {
           ConfigEnvirontment objconfig = new ConfigEnvirontment(pathservlet);
                
           Class.forName("com.mysql.cj.jdbc.Driver");
-          cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/AppCont?useSSL=false", "root" ,"Esther65@");
+          cnx = DriverManager.getConnection("jdbc:mysql://" + objconfig.getDbserver_address() + ":3306/" + objconfig.getDbserver_database()+ "?useSSL=false", objconfig.getDbserver_user() ,objconfig.getDbserver_password());
             
           Statement stmt2 = cnx.createStatement();
           stmt2.execute("SET CHARACTER SET utf8");

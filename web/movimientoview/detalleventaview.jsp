@@ -6,7 +6,9 @@
 <%@page import="java.util.ArrayList"%>
 <%
    List<DetalleVenta> arraydetalleventa = (ArrayList<DetalleVenta>) request.getSession().getAttribute("arraydetalleventa");
-   DocumentoModel objdocumentomodel = new DocumentoModel();
+    ServletContext context = request.getServletContext();
+     String pathservlet = context.getRealPath("/");
+   DocumentoModel objdocumentomodel = new DocumentoModel(pathservlet);
 %>
 
 <table  class="table table-bordered table-striped">
