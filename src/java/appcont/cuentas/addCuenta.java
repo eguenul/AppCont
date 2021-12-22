@@ -42,14 +42,41 @@ public class addCuenta extends HttpServlet {
          
          
         CuentaModel objCuentasModel = new CuentaModel(pathservlet);
-        ArrayList<Cuenta> arraylistCuenta = objCuentasModel.listCuenta();
         
         int cantidadCuenta = objCuentasModel.cantCuentas(parseInt(cuentapadre), parseInt(cuentanivel));
         cantidadCuenta = cantidadCuenta+1;
         String codigocuenta = String.valueOf(cuentapadre)+String.valueOf(cantidadCuenta);
         objCuentasModel.addCuenta(codigocuenta,parseInt(cuentanivel), parseInt(cuentapadre), cuentades, 0);
+        
+        
+         
+ 
+         
+         
+
+         int cantRegistros = objCuentasModel.conteoCuentas();
+         int pagesize = 10;  				
+	int totalPage = (cantRegistros-1)/pagesize+1;
+        System.out.print(totalPage); 
+        int pageNo = 1;
+         /*  calculo de indice; */
+            int begin = (pageNo-1)*pagesize;
+	    
+        
+        
+        
+        ArrayList<Cuenta> arraylistCuenta = objCuentasModel.listCuentalimit(begin, pagesize);
         request.getSession().setAttribute("arraylistCuenta", arraylistCuenta);
+        request.getSession().setAttribute("PAGINA", pageNo);
+        request.getSession().setAttribute("TOTAL_PAGINAS", totalPage);
         getServletConfig().getServletContext().getRequestDispatcher("/cuentasview/listcuenta.jsp").forward(request,response);
+         
+           
+        
+        
+        
+        
+        
     } catch (SQLException | ClassNotFoundException | ParserConfigurationException | SAXException ex) {
         Logger.getLogger(addCuenta.class.getName()).log(Level.SEVERE, null, ex);
     }

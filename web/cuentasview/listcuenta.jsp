@@ -4,7 +4,12 @@
 
 <% ArrayList<Cuenta> arraylistCuenta = (ArrayList<Cuenta>) request.getSession().getAttribute("arraylistCuenta");
        request.getSession().setAttribute("arraylistCuenta", arraylistCuenta);
- %>   
+ %>  
+<div id="botonera1" align="center">
+    <button onclick="cargaPagina('ANT','<% out.print(request.getSession().getAttribute("PAGINA")); %>')">ANTERIOR</button>
+    <% out.print(request.getSession().getAttribute("PAGINA")); %> de   <% out.print(request.getSession().getAttribute("TOTAL_PAGINAS")); %>
+  <button onclick="cargaPagina('SIG','<% out.print(request.getSession().getAttribute("PAGINA")); %>')">SIGUIENTE</button>
+  </div> 
      <table id="tabla1" class="table table-bordered table-striped">
         <tr>
             <th>PLAN DE CUENTAS</th>          
@@ -21,4 +26,10 @@
  </tr>
  <%  } %>
   </table>
-      
+  <div id="botonera2" align="center">
+  <button  onclick="cargaPagina('ANT','<% out.print(request.getSession().getAttribute("PAGINA")); %>')">ANTERIOR</button>
+    <% out.print(request.getSession().getAttribute("PAGINA")); %> de <% out.print(request.getSession().getAttribute("TOTAL_PAGINAS")); %>
+  <button onclick="cargaPagina('SIG','<% out.print(request.getSession().getAttribute("PAGINA")); %>')">SIGUIENTE</button>
+  </div>
+  
+  

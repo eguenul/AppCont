@@ -33,8 +33,22 @@ public class listCuenta extends HttpServlet {
 
      try {
          CuentaModel objCuentasModel = new CuentaModel(pathservlet);
-         ArrayList<Cuenta> arraylistCuenta = objCuentasModel.listCuenta();
+
+         int cantRegistros = objCuentasModel.conteoCuentas();
+         int pagesize = 10;  				
+	int totalPage = (cantRegistros-1)/pagesize+1;
+        System.out.print(totalPage); 
+        int pageNo = 1;
+         /*  calculo de indice; */
+            int begin = (pageNo-1)*pagesize;
+	    
+        
+        
+        
+        ArrayList<Cuenta> arraylistCuenta = objCuentasModel.listCuentalimit(begin, pagesize);
          request.getSession().setAttribute("arraylistCuenta", arraylistCuenta);
+        request.getSession().setAttribute("PAGINA", pageNo);
+        request.getSession().setAttribute("TOTAL_PAGINAS", totalPage);
          getServletConfig().getServletContext().getRequestDispatcher("/cuentasview/adminCuenta.jsp").forward(request,response);
          
           } 
@@ -46,6 +60,76 @@ public class listCuenta extends HttpServlet {
      
      
  }  
-    
+ 
+ @Override
+ public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    try {
+        ServletContext context = request.getServletContext();
+        String pathservlet = context.getRealPath("/");
+        
+        CuentaModel objCuentasModel = new CuentaModel(pathservlet);
+        
+        int cantRegistros = objCuentasModel.conteoCuentas();
+        int pagesize = 10;
+        int totalPage = (cantRegistros-1)/pagesize+1;
+        System.out.print(totalPage);
+
+        String ACC = request.getParameter("ACC");
+         int pageNo = Integer.parseInt(request.getParameter("PAGINA"));
+         
+         switch(ACC){
+             
+             case "ANT":
+                        
+                      
+                       pageNo = pageNo - 1;
+                               
+                       if(pageNo<1){
+                           pageNo = totalPage;
+                 
+                        }
+             
+                        break;
+             
+             
+             case "SIG":
+                        
+                        pageNo = (pageNo  + 1);
+                       if(pageNo>totalPage){
+                           pageNo=1;
+                            
+                        }
+                        break;
+             
+             
+             
+         }
+         
+         
+         
+         
+         /*  calculo de indice; */
+            int begin = (pageNo-1)*pagesize;
+	    
+        
+        
+        
+        ArrayList<Cuenta> arraylistCuenta = objCuentasModel.listCuentalimit(begin, pagesize);
+         request.getSession().setAttribute("arraylistCuenta", arraylistCuenta);
+        request.getSession().setAttribute("PAGINA", pageNo);
+        request.getSession().setAttribute("TOTAL_PAGINAS", totalPage);
+         getServletConfig().getServletContext().getRequestDispatcher("/cuentasview/listcuenta.jsp").forward(request,response);
+         
+        
+        
+        
+    } catch (SQLException | ClassNotFoundException | ParserConfigurationException | SAXException ex) {
+        Logger.getLogger(listCuenta.class.getName()).log(Level.SEVERE, null, ex);
+    }
+ 
+     
+     
+ 
+ }   
     
 }

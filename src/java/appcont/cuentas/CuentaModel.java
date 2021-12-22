@@ -65,6 +65,44 @@ public CuentaModel(String pathservlet) throws SQLException, ClassNotFoundExcepti
             return 0;
         }
         }
+    
+    
+    
+     public int conteoCuentas() throws SQLException{
+           String sql= "Select count(*) as Cantidad from Cuentas";
+           Statement stmt = conexion.createStatement();
+           ResultSet objRecordset = stmt.executeQuery(sql);
+        if(objRecordset.next()==true){
+           return objRecordset.getInt("Cantidad");
+        
+        }else{
+            return 0;
+        }
+        }
+     
+     
+     
+      public ArrayList<Cuenta> listCuentalimit(int begin, int pageSize) throws SQLException{
+           String sql= "Select * from Cuentas Order By CuentaCod  ASC limit " + String.valueOf(begin) + "," + String.valueOf(pageSize) ;
+           Statement stmt = conexion.createStatement();
+           ResultSet objrecordset = stmt.executeQuery(sql);
+           ArrayList<Cuenta> arraylistcuenta = new ArrayList<>();
+
+       
+               while(objrecordset.next()){
+                   
+                    Cuenta objCuenta2 = new Cuenta();
+                    objCuenta2.setCuentacod(objrecordset.getInt("CuentaCod"));
+                    objCuenta2.setCuentanom(objrecordset.getString("CuentaDes"));
+                    objCuenta2.setCuentanivel(objrecordset.getInt("Nivel"));
+                    arraylistcuenta.add(objCuenta2);
+               }
+               
+               
+          
+         
+           return arraylistcuenta;
+    }     
       
     
     public boolean buscaCuenta(int cuentacod, int nivelcuenta) throws SQLException{
