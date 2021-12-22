@@ -34,14 +34,25 @@ public CuentaModel(String pathservlet) throws SQLException, ClassNotFoundExcepti
 
 
     public void addCuenta(String codcuenta, int nivelcuenta,int cuentaorigen, String cuentades ,int empresaid) throws SQLException{
-        int cantidadcuentas = cantCuentas(cuentaorigen,nivelcuenta);
-        System.out.print(cantidadcuentas);
+   
+        
+        int auxcuenta = 0;
+        boolean flagcuenta = buscaCuenta(cuentaorigen,nivelcuenta);
+      if (flagcuenta == false ){ 
+         auxcuenta = genereCodCuenta(cuentaorigen,nivelcuenta,flagcuenta);
+      }else{
+          
+          auxcuenta = genereCodCuenta2(cuentaorigen,nivelcuenta);
+          
+      }
         String sql= "insert into Cuentas (CuentaCod,CuentaDes,Nivel,CuentaPadre,EmpresaId) \n"+
-                    "values("+codcuenta+",'"+ cuentades + "'," + String.valueOf(nivelcuenta )+"," + cuentaorigen  + ",31" +  ")";   
+                    "values("+auxcuenta+",'"+ cuentades + "'," + String.valueOf(nivelcuenta )+"," + cuentaorigen  + ",31" +  ")";   
         System.out.print(sql);
-        Statement stmt = conexion.createStatement();
+        Statement stmt = conexion.createStatement(); 
+       
         stmt.execute(sql);
-    }
+       
+        }
 
     public int cantCuentas(int cuentaorigen,int nivelcuenta) throws SQLException{
            String sql= "Select count(*) as Cantidad from Cuentas where CuentaPadre="+String.valueOf(cuentaorigen) + " and Nivel="+nivelcuenta;
@@ -54,16 +65,119 @@ public CuentaModel(String pathservlet) throws SQLException, ClassNotFoundExcepti
             return 0;
         }
         }
+      
+    
+    public boolean buscaCuenta(int cuentacod, int nivelcuenta) throws SQLException{
+          
+        /* busco la ultima cuenta generada */
+              
+         String sql= "Select CuentaCod from Cuentas where CuentaPadre="+String.valueOf(cuentacod) + " and Nivel="+nivelcuenta + " Order By CuentaCod DESC limit 0,1";
+         System.out.print(sql);
+         Statement stmt = conexion.createStatement();
+           ResultSet objRecordset = stmt.executeQuery(sql);
+        if(objRecordset.next()==true){
+             System.out.print("cuenta existente");
+           return true;
         
+        }else{
+                
+             System.out.print("cuenta nueva");
+            return false;
+        }
+        
+    }
+    
+    
+    public int getCuentaCod(int cuentacod, int nivelcuenta) throws SQLException{
+          
+        /* busco la ultima cuenta generada */
+         String sql= "Select CuentaCod from Cuentas where CuentaPadre="+String.valueOf(cuentacod) + " and Nivel="+nivelcuenta + " Order By CuentaCod DESC limit 0,1";
+         System.out.print(sql);
+         Statement stmt = conexion.createStatement();
+         ResultSet objRecordset = stmt.executeQuery(sql);
+         
+         if (objRecordset.next()==true){
+         return objRecordset.getInt("CuentaCod");
+  
+         }else{
+             
+             return 0;
+         }
+         }
+    
+    
+    
     
 
 
-    public int genereCodCuenta(){
-
-        return 0;
+    public int genereCodCuenta(int cuentapadre, int cuentanivel, boolean flagcuenta){
+       int codigocuenta = 0;
+        switch(cuentanivel){
+            
+            
+            case 2: codigocuenta = cuentapadre + 100000;
+                
+                    break;
+            
+                    
+            case 3:codigocuenta = cuentapadre + 10000;
+                
+                    break;
+                    
+            case 4: codigocuenta = cuentapadre + 1000;
+                
+                    break;
+                    
+                    
+            case 5:codigocuenta = cuentapadre + 100;
+                
+                    break;
+                  
+            case 6: codigocuenta = cuentapadre + 10;
+                
+                    break;
+                
+                    
+        }
+        
+        
+        return codigocuenta;
     }
 
-
+ public int genereCodCuenta2(int cuentacod, int cuentanivel) throws SQLException{
+            int codigocuenta = getCuentaCod(cuentacod,cuentanivel);
+             switch(cuentanivel){
+            
+            
+            case 2: codigocuenta = codigocuenta + 100000;
+                
+                    break;
+            
+                    
+            case 3:codigocuenta = codigocuenta + 10000;
+                
+                    break;
+                    
+            case 4: codigocuenta = codigocuenta + 1000;
+                
+                    break;
+                    
+                    
+            case 5:codigocuenta = codigocuenta + 100;
+                
+                    break;
+                  
+            case 6: codigocuenta = codigocuenta + 10;
+                
+                    break;
+                
+                    
+        }
+        
+        
+        return codigocuenta;
+          
+ }
 
 
 
@@ -95,9 +209,6 @@ public CuentaModel(String pathservlet) throws SQLException, ClassNotFoundExcepti
            return arraylistcuenta;
     }     
 
-    public void list__subCuenta(int parmcodcuenta, int nivel){
-    
-    }
     
     
     
@@ -109,24 +220,24 @@ public CuentaModel(String pathservlet) throws SQLException, ClassNotFoundExcepti
     }
 
 
-        public int getIDCuenta(){
+    public int getIDCuenta(){
 
 
-                       return 0;
-        }
+                           return 0;
+    }
 
     public Cuenta getDataCuenta(){
 
-        Cuenta objCuenta = new Cuenta();
+            Cuenta objCuenta = new Cuenta();
 
-        return objCuenta;
+            return objCuenta;
 
     }
 
-public void clonarCuenta(){
-    
-    
-}
+    public void clonarCuenta(){
+
+
+    }
 
     
     
