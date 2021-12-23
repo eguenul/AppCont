@@ -3,38 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/movimiento/MovimientoModel.java</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/empresa/EmpresaModel.java</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/movimiento/addMovimiento.java</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/cuentas/addCuenta.java</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/include/Conexion.java</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/web/cuentasview/addCuenta.jsp</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/movimiento/getVenta.java</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/movimiento/getCompra.java</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/login/SetPassServlet.java</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/cliprov/CliProvModel.java</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/documento/DocumentoModel.java</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/web/movimientoview/formregistro.jsp</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/cliprov/CliProvServlet.java</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/centralizacion/addCentralizacion.java</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/web/cuentasview/adminCuenta.jsp</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/web/scripts/listCuenta.js</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/cuentas/listCuenta.java</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/empresa/selEmpresaServlet.java</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/web/movimientoview/registrodoc.jsp</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/web/WEB-INF/properties/appcont.properties</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/login/SetPassModel.java</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/centralizacion/CentralizacionModel.java</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/cuentas/CuentaModel.java</file>
             <file>file:/home/esteban/proyectos_web/AppCont/web/cuentasview/listcuenta.jsp</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/web/cliprovview/divlistacliprov2.jsp</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/include/ConfigEnvirontment.java</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/empresa/EmpresaServlet.java</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/login/LoginModel.java</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/login/LoginServlet.java</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/empresa/EmpresaServlet2.java</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/web/cliprovview/divlistacliprov.jsp</file>
-            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/include/Funciones.java</file>
+            <file>file:/home/esteban/proyectos_web/AppCont/web/cuentasview/addCuenta.jsp</file>
+            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/cuentas/updateCuenta.java</file>
+            <file>file:/home/esteban/proyectos_web/AppCont/web/scripts/Cuenta.js</file>
+            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/cuentas/listCuenta.java</file>
+            <file>file:/home/esteban/proyectos_web/AppCont/web/cuentasview/adminCuenta.jsp</file>
+            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/cuentas/deleteCuenta.java</file>
+            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/cuentas/addCuenta.java</file>
+            <file>file:/home/esteban/proyectos_web/AppCont/web/WEB-INF/web.xml</file>
+            <file>file:/home/esteban/proyectos_web/AppCont/src/java/appcont/cuentas/CuentaModel.java</file>
         </group>
     </open-files>
 </project-private>

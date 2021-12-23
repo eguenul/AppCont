@@ -40,8 +40,26 @@
       <url-pattern>/addCuenta</url-pattern>
    </servlet-mapping>
   
+  <servlet>
+      <servlet-name>updateCuenta</servlet-name>
+      <servlet-class>appcont.cuentas.updateCuenta</servlet-class>
+   </servlet>
+  <servlet-mapping>
+      <servlet-name>updateCuenta</servlet-name>
+      <url-pattern>/updateCuenta</url-pattern>
+   </servlet-mapping>
+  
   
    
+  <servlet>
+      <servlet-name>deleteCuenta</servlet-name>
+      <servlet-class>appcont.cuentas.deleteCuenta</servlet-class>
+   </servlet>
+  <servlet-mapping>
+      <servlet-name>deleteCuenta</servlet-name>
+      <url-pattern>/deleteCuenta</url-pattern>
+   </servlet-mapping>
+  
    
    
    

@@ -1,13 +1,3 @@
- 
- 
- /*
- $(document).ready(function(){
-        $("#btnaddcuenta").click(function(){
-        $("#divaddcuenta").modal('show');
-        });
-    });
-*/
-
 function showAddCuenta(parmcodcuenta,parmnivelcuenta){
     auxnivelcuenta = parseInt(parmnivelcuenta)+1;
     document.getElementById('CuentaNivel').value = auxnivelcuenta;  
@@ -24,25 +14,16 @@ function addCuentaBd(){
      var cuentapadre = document.getElementById('CuentaPadre').value;
      var parametro = "CuentaNivel="+cuentanivel+"&CuentaDes="+cuentades+"&CuentaPadre="+cuentapadre;
     alert(parametro); 
+    
     cargarAjax('addCuenta',parametro,'listCuentas');
+    $(function () {
+         $('#listCuentas').modal(toggle)
+   });
 }
 
-function cierraModal(){
-    
-    
-}
+function cargaPagina(acc,pagina){
+    parametrolist = "ACC="+acc + "&PAGINA="+pagina;  
+    cargarAjax('listCuenta',parametrolist,'listCuentas');
 
-function validaForm(){
-    
-    
-    
-    return true;
-}
-
-
-
-function loadCuentas(){
-    
-    
     
 }

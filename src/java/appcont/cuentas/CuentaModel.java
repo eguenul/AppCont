@@ -219,12 +219,30 @@ public CuentaModel(String pathservlet) throws SQLException, ClassNotFoundExcepti
 
 
 
-    public void updateCuenta(){
-
+    public void updateCuenta(int cuentacod, String cuentades) throws SQLException{
+         String sql= "Update Cuentas set CuentaDes='"+cuentades + "' Where CuentaCod=" + String.valueOf(cuentacod);
+         System.out.print(sql);
+         Statement stmt = conexion.createStatement();
+         stmt.execute(sql);
 
     }
 
 
+    
+    public void deleteCuenta(int cuentacod) throws SQLException{
+          String sql= "Delete from Cuentas Where CuentaCod=" + String.valueOf(cuentacod);
+         System.out.print(sql);
+         Statement stmt = conexion.createStatement();
+         stmt.execute(sql);
+
+
+
+    }
+
+    
+    
+    
+    
     public ArrayList<Cuenta> listCuenta() throws SQLException{
            String sql= "Select * from Cuentas Order By CuentaCod  ASC";
            Statement stmt = conexion.createStatement();
@@ -250,13 +268,8 @@ public CuentaModel(String pathservlet) throws SQLException, ClassNotFoundExcepti
     
     
     
-    public void deleteCuenta(){
-
-
-
-
-    }
-
+    
+    
 
     public int getIDCuenta(){
 

@@ -21,8 +21,9 @@
     
     <tr>
     <td align="right" colspan="2">
-          
-        <button onclick="addCuentaBd();">Grabar Cuenta</button>
+        <button  id="btnaddCuenta" onclick="addCuentaBd();">Grabar Cuenta</button>
+    <button   id="btnUpdateCuenta" onclick="addCuentaBd();">Actualizar Cuenta</button>
+    <button   id="btndeleteCuenta" onclick="addCuentaBd();">Eliminar Cuenta</button>
     </td> 
     </tr>     
         
@@ -32,7 +33,7 @@
             CODIGO            
         </td>
         <td>
-            <input id="CuentaCod">     
+            <input readonly="yes" id="CuentaCod">     
          </td>
     </tr>
     
@@ -50,7 +51,7 @@
             NIVEL            
         </td>
         <td>
-            <input id="CuentaNivel">     
+            <input readonly="yes" id="CuentaNivel">     
          </td>
 </tr>
 
@@ -59,7 +60,7 @@
             CUENTA ORIGEN            
         </td>
         <td>
-            <input id="CuentaPadre">     
+            <input readonly="yes" id="CuentaPadre">     
          </td>
 </tr>
 
