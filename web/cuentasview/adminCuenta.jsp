@@ -8,7 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="scripts/Cuenta.js"></script>
-  
+   <script src="scripts/listCuenta.js"></script>
   <script src="scripts/ajax.js"></script>   
   </head>
 <body>
@@ -39,9 +39,9 @@
     --->
     
       <div class="nav navbar-nav navbar-right">
-        <button type="button" class="btn btn-primary navbar-btn">
-          <span class="glyphicon glyphicon-plus"></span>
-          Activiteit toevoegen
+          <button onclick="window.location='index.jsp';" type="button" class="btn btn-primary navbar-btn">
+          <span class="glyphicon glyphicon-home"></span>
+         Home
         </button>
        </div>
   

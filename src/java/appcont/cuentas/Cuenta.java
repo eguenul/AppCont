@@ -16,6 +16,15 @@ public class Cuenta {
     private int cuentaid;
     private int empresaid;
     private int cuentanivel;
+    private int cuentapadre;
+
+    public int getCuentapadre() {
+        return cuentapadre;
+    }
+
+    public void setCuentapadre(int cuentapadre) {
+        this.cuentapadre = cuentapadre;
+    }
     private String cuentanom;
 
     public int getCuentacod() {

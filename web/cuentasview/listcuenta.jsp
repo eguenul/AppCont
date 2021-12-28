@@ -28,8 +28,8 @@
   
      <button   onclick="btnaddCuenta.disabled=false; btndeleteCuenta.disabled=true; btnUpdateCuenta.disabled=true; showAddCuenta('<% out.print(i.getCuentacod()); %>','<% out.print(i.getCuentanivel()); %>');">Agregar</button>
         <% if(i.getCuentanivel()>1){ %>
-     <button onclick="btnaddCuenta.disabled=true; btndeleteCuenta.disabled=true; btnUpdateCuenta.disabled=false;  showAddCuenta('<% out.print(i.getCuentacod()); %>','<% out.print(i.getCuentanivel()); %>');">Actualizar</button>
-     <button  onclick="btnaddCuenta.disabled=true; btndeleteCuenta.disabled=false; btnUpdateCuenta.disabled=true;   showAddCuenta('<% out.print(i.getCuentacod()); %>','<% out.print(i.getCuentanivel()); %>');">Eliminar</button>
+     <button onclick="btnaddCuenta.disabled=true; btndeleteCuenta.disabled=true; btnUpdateCuenta.disabled=false;  showUpdateCuenta('<% out.print(i.getCuentacod()); %>','<% out.print(i.getCuentanom()); %>','<% out.print(i.getCuentapadre()); %>','<% out.print(i.getCuentanivel()); %>','<% out.print(i.getCuentaid()); %>');">Actualizar</button>
+     <button  onclick="btnaddCuenta.disabled=true; btndeleteCuenta.disabled=false; btnUpdateCuenta.disabled=true;   showDeleteCuenta('<% out.print(i.getCuentacod()); %>','<% out.print(i.getCuentanom()); %>','<% out.print(i.getCuentapadre()); %>','<% out.print(i.getCuentanivel()); %>','<% out.print(i.getCuentaid()); %>');">Eliminar</button>
     <% }else{ %>     
     
     &nbsp;

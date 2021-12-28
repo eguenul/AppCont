@@ -22,8 +22,8 @@
     <tr>
     <td align="right" colspan="2">
         <button  id="btnaddCuenta" onclick="addCuentaBd();">Grabar Cuenta</button>
-    <button   id="btnUpdateCuenta" onclick="addCuentaBd();">Actualizar Cuenta</button>
-    <button   id="btndeleteCuenta" onclick="addCuentaBd();">Eliminar Cuenta</button>
+    <button   id="btnUpdateCuenta" onclick="updateCuenta();">Actualizar Cuenta</button>
+    <button   id="btndeleteCuenta" onclick="deleteCuenta();">Eliminar Cuenta</button>
     </td> 
     </tr>     
         

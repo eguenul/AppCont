@@ -95,6 +95,9 @@ public CuentaModel(String pathservlet) throws SQLException, ClassNotFoundExcepti
                     objCuenta2.setCuentacod(objrecordset.getInt("CuentaCod"));
                     objCuenta2.setCuentanom(objrecordset.getString("CuentaDes"));
                     objCuenta2.setCuentanivel(objrecordset.getInt("Nivel"));
+                    objCuenta2.setCuentapadre(objrecordset.getInt("CuentaPadre"));
+                    objCuenta2.setCuentaid(objrecordset.getInt("CuentaId"));
+                    
                     arraylistcuenta.add(objCuenta2);
                }
                
@@ -256,6 +259,9 @@ public CuentaModel(String pathservlet) throws SQLException, ClassNotFoundExcepti
                     objCuenta2.setCuentacod(objrecordset.getInt("CuentaCod"));
                     objCuenta2.setCuentanom(objrecordset.getString("CuentaDes"));
                     objCuenta2.setCuentanivel(objrecordset.getInt("Nivel"));
+                    objCuenta2.setCuentapadre(objrecordset.getInt("CuentaPadre"));
+                   objCuenta2.setCuentaid(objrecordset.getInt("CuentaId"));
+                  
                     arraylistcuenta.add(objCuenta2);
                }
                

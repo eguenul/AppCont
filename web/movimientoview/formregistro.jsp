@@ -122,7 +122,7 @@ if(estadodoc=="OK"){ %>
          <td>
             NRO DOCUMENTO
         </td>
-        <td><input name="NumDoc" id="NumDoc">
+        <td><input size="8" name="NumDoc" id="NumDoc">
          <button name="btnsearchDoc" type="button" id="btnsearchDoc" data-toggle="modal" data-target="#divsearchdoc"  class="btn btn-primary btn-sm">
           <span class="glyphicon glyphicon-search"></span>Buscar
         </button>
@@ -135,7 +135,7 @@ if(estadodoc=="OK"){ %>
         <td>
            FECHA DOCUMENTO
         </td>
-        <td><input name="FechaDoc" id="FechaDoc" type="date"></td>
+        <td><input size="8" name="FechaDoc" id="FechaDoc" type="date"></td>
        
         
          <td>
@@ -161,10 +161,10 @@ if(estadodoc=="OK"){ %>
     <td>MONTO TOTAL</td>
 </tr>
 <tr> 
-    <td><input name="MontoExento" id="MontoExento"></td>
-    <td><input name="MontoNeto" id="MontoNeto"></td>
-    <td><input name=MontoIva" id="MontoIva"></td>
-    <td><input name="MontoTotal" id="MontoTotal"></td>
+    <td><input size="8" name="MontoExento" id="MontoExento"></td>
+    <td><input size="8" name="MontoNeto" id="MontoNeto"></td>
+    <td><input size="8" name=MontoIva" id="MontoIva"></td>
+    <td><input size="8" name="MontoTotal" id="MontoTotal"></td>
 </tr>
 
 

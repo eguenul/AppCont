@@ -6,7 +6,6 @@
 package appcont.cuentas;
 
 import java.io.IOException;
-import static java.lang.Integer.parseInt;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
