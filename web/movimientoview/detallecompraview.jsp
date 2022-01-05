@@ -23,14 +23,16 @@
       FOLIO
     </th>
      <th>
-        TIPO COMPRA
+       RUT PROVEEDOR
     </th>
-        <th>
-        RUT PROVEEDOR
-    </th>
-    <th>
+     <th>
        RAZON SOCIAL
     </th>
+    
+        <th>
+        MONTO TOTAL
+    </th>
+   
     
     <!--
      <th>
@@ -42,12 +44,14 @@
    --> 
     
     <th>
-      MONTO TOTAL
+      ACCION
     </th>
-    
+    <!--
      <th>
        ACCION
     </th>
+    
+    -->
     </tr>
     <%
         for (DetalleCompra objdetallecompra :  arraydetallecompra){
@@ -56,7 +60,7 @@
      <tr>
  
     <td>
-        <%  out.print(objdocumentomodel.getNombreDocCodSii(objdetallecompra.getTipo_Doc())); %>
+        <%   out.print(objdocumentomodel.getNombreDocCodSii(objdetallecompra.getTipo_Doc()));  %>
     
         
     </td>
@@ -69,6 +73,7 @@
    
         <%  out.print(objdetallecompra.getFolio());  %>
     </td>
+    <!--
      <td>
         <% /* out.print(objdetallecompra.getTipo_Compra()); */ %>
         <select>
@@ -77,13 +82,15 @@
             <option>IVA NO RECUPERABLE</option>
            <option>COMPRA DE SUPERMERCADO</option>
         </select>
-    </td>
+    -->
+     </td>
         <td>
       <% out.print(objdetallecompra.getRUT_Proveedor()); %>
     </td>
-    <td>
-        <% out.print(objdetallecompra.getRazon_Social()); %>
+     <td>
+      <% out.print(objdetallecompra.getRazon_Social()); %>
     </td>
+    
    <!-- <td> -->
         <% /*  out.print(objdetallecompra.getMonto_Exento()); */%>
  <!--   </td> -->
@@ -98,8 +105,9 @@
  </td>
     <td>
         
-        <button class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-ok"></span>Aceptar</button>
-   <!--      <button>Rechazar</button> -->
+        <button class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-ok"></span>Aceptar</button><button class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-remove"></span>Rechazar</button>
+   
+        <!--      <button>Rechazar</button> -->
     </td>
     </tr>
     

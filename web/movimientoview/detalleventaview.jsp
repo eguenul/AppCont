@@ -23,9 +23,7 @@
     <th>
       FOLIO
     </th>
-     <th>
-        TIPO COMPRA
-    </th>
+     
         <th>
         RUT PROVEEDOR
     </th>
@@ -61,15 +59,7 @@
    
         <%  out.print(objdetalleventa.getFolio());  %>
     </td>
-     <td>
-        <% /* out.print(objdetallecompra.getTipo_Compra()); */ %>
-        <select>
-            <option>IVA DE USO COMUN</option>
-             <option>COMPRAS DEL GIRO</option>
-            <option>IVA NO RECUPERABLE</option>
-           <option>COMPRA DE SUPERMERCADO</option>
-        </select>
-    </td>
+    
         <td>
       <% out.print(objdetalleventa.getRUT_cliente()); %>
     </td>
