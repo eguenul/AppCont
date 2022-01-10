@@ -30,6 +30,11 @@ public class getCompra extends HttpServlet {
     @Override  
   public void  doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
       
+       int empresaid2 = (int) request.getSession().getAttribute("empresaid");
+
+       request.getSession().setAttribute("empresaid",empresaid2);
+ 
+      
         getServletConfig().getServletContext().getRequestDispatcher("/movimientoview/getcompraview.jsp").forward(request,response);
   
   }
@@ -44,10 +49,9 @@ public class getCompra extends HttpServlet {
             String acc = request.getParameter("ACC");
             
             int empresaid = (int) request.getSession().getAttribute("empresaid");
-            EmpresaModel objEmpresaModel = new EmpresaModel(pathservlet); 
-            Empresa objEmpresa = objEmpresaModel.getData(empresaid);
-            String rutempresa = objEmpresa.getEmpresarut();
-            
+            request.getSession().setAttribute("empresaid", empresaid);
+          
+             
             
             switch(acc){
                 

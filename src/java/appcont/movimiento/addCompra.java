@@ -22,9 +22,9 @@ public class addCompra extends HttpServlet {
     
     request.getSession().setAttribute("tipo_movimiento", "COMPRA");
     response.sendRedirect("addMovimiento");
- 
- }
+   
      
     
    
+}
 }

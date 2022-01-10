@@ -5,11 +5,16 @@
 <%
    List<DetalleCompra> arraydetallecompra = (ArrayList<DetalleCompra>) request.getSession().getAttribute("arraydetallecompra");
    
+   
      ServletContext context = request.getServletContext();
      String pathservlet = context.getRealPath("/");
-   DocumentoModel objdocumentomodel = new DocumentoModel(pathservlet);
-%>
+     DocumentoModel objdocumentomodel = new DocumentoModel(pathservlet);
+     
 
+%>
+<div id="documento">
+    
+</div>
 <table  class="table table-bordered table-striped">
     <tr>
   
@@ -46,6 +51,12 @@
     <th>
       ACCION
     </th>
+    
+    <th>
+      ESTADO
+    </th>
+    
+    
     <!--
      <th>
        ACCION
@@ -54,6 +65,7 @@
     -->
     </tr>
     <%
+        int i=0;
         for (DetalleCompra objdetallecompra :  arraydetallecompra){
      %>
      
@@ -105,12 +117,20 @@
  </td>
     <td>
         
-        <button class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-ok"></span>Aceptar</button><button class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-remove"></span>Rechazar</button>
-   
+        
+        <button  id="botonaceptar<% out.print(i); %>"   onclick="addCompra('<% out.print( objdetallecompra.getRUT_Proveedor()); %>','<% out.print( objdetallecompra.getTipo_Doc()); %>','<% out.print( objdetallecompra.getFecha_Docto()); %>','<% out.print( objdetallecompra.getFolio()); %>' ,'<% out.print( objdetallecompra.getMonto_Exento()); %>','<% out.print( objdetallecompra.getMonto_Neto()); %>', '<% out.print( objdetallecompra.getMonto_Iva_No_Recuperable()); %>' ,'botonaceptar'+<% out.print(i); %>);" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-ok"></span>Aceptar</button>
+        
+            <!--
+        <button class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-remove"></span>Rechazar</button>
+   -->
         <!--      <button>Rechazar</button> -->
     </td>
+    <td>
+        PENDIENTE
+    </td>
     </tr>
-    
+   <% i++; %>
     <% } %>
     
 </table>
+    <input type="hidden" id="empresaid" value="<% out.print(request.getSession().getAttribute("empresaid")); %>">

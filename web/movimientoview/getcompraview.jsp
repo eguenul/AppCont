@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"> <!?Con esto garantizamos que se vea bien en dispositivos móviles?> 
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> 
    <script src="scripts/ajax.js"></script>
+   <script src="scripts/getCompra.js"></script>
     
     </head>
     <body>
@@ -45,9 +46,19 @@
                  <input id="YEAR">
                 </td>
                 <td><button onclick="cargarAjax('getCompra','ACC=COMPRA&MES='+document.getElementById('MES').value+'&YEAR='+document.getElementById('YEAR').value,'listadocompras');" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-download"></span> Importar RC</button>
-                 <button onclick="window.location='index.jsp';" type="button" name="btnLimpiar" class="btn btn-primary btn-sm">
+                 
+                    <button onclick="window.location='getCompra';" type="button" name="btnLimpiar" class="btn btn-primary btn-sm">
+          <span class="glyphicon glyphicon-file"></span>Nuevo
+           </button> 
+                    
+                    
+                    
+                    
+                    
+                    <button onclick="window.location='index.jsp';" type="button" name="btnLimpiar" class="btn btn-primary btn-sm">
           <span class="glyphicon glyphicon-home"></span>Home 
            </button>
+               
                 
                 
                 </td>

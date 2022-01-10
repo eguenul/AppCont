@@ -200,7 +200,7 @@ System.out.print(arraylineadetalle[0] + " "+arraylineadetalle[1] + " " + arrayli
     objDetalleCompra.setFecha_Docto((arraylineadetalle[6]));
 
     /* monto exento del documento */
-    
+    objDetalleCompra.setMonto_Iva_No_Recuperable((arraylineadetalle[8]));
    objDetalleCompra.setMonto_Exento((arraylineadetalle[9]));
     
    /* monto iva neto */
@@ -215,6 +215,7 @@ System.out.print(arraylineadetalle[0] + " "+arraylineadetalle[1] + " " + arrayli
           objDetalleCompra.setMonto_IVA_Recuperable("0");
    }
     /* monto iva no recuperable */
+    
    if(!"".equals(arraylineadetalle[12])){
    objDetalleCompra.setMonto_Iva_No_Recuperable(arraylineadetalle[12]);
    }else{

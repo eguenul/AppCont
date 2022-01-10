@@ -311,7 +311,25 @@ public int getIdCliProv(String cliprovrut) throws SQLException, ClassNotFoundExc
         
 
 
-
+public boolean flagCliProv (String cliprovrut) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
+    
+    
+      Conexion auxconexion = new Conexion(pathservlet);
+        Connection objconexion = auxconexion.obtener();
+        
+        
+        String sql ="Select * from CliProv where CliProvRut='"+cliprovrut+"' and EmpresaId="+String.valueOf(empresaid);
+        Statement stmt = objconexion.createStatement();
+        ResultSet objresultset = stmt.executeQuery(sql);
+    
+    
+       return objresultset.next()==true;
+    
+      
+    
+    
+   
+}
 
 
 }

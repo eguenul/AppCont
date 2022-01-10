@@ -86,6 +86,39 @@
    </servlet-mapping>
    
    
+  
+   
+     <servlet>
+      <servlet-name>addDTECompra</servlet-name>
+      <servlet-class>appcont.movimiento.addDTECompra</servlet-class>
+   </servlet>
+  <servlet-mapping>
+      <servlet-name>addDTECompra</servlet-name>
+      <url-pattern>/addDTECompra</url-pattern>
+   </servlet-mapping>
+   
+   
+   
+    <servlet>
+      <servlet-name>addDTEVenta</servlet-name>
+      <servlet-class>appcont.movimiento.addDTEVenta</servlet-class>
+   </servlet>
+  <servlet-mapping>
+      <servlet-name>addDTEVenta</servlet-name>
+      <url-pattern>/addDTEVenta</url-pattern>
+   </servlet-mapping>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
    
    <servlet>
       <servlet-name>addcompra</servlet-name>
