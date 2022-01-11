@@ -5,8 +5,6 @@
  */
 package appcont.movimiento;
 
-import appcont.empresa.Empresa;
-import appcont.empresa.EmpresaModel;
 import getdte.DetalleCompra;
 import getdte.ICVCompra;
 import java.io.IOException;
@@ -46,20 +44,27 @@ public class getCompra extends HttpServlet {
 
       
       try {
-            String acc = request.getParameter("ACC");
-            
-            int empresaid = (int) request.getSession().getAttribute("empresaid");
-            request.getSession().setAttribute("empresaid", empresaid);
-          
+           
              
-            
+                String acc = request.getParameter("ACC");
+                
+                
+                  int empresaid = (int) request.getSession().getAttribute("empresaid");
+            request.getSession().setAttribute("empresaid", empresaid);
+         
+                
             switch(acc){
                 
                 
-               
+            
+            
+          
                     
                 
                 case "COMPRA":
+                    
+                     
+                    
                     ICVCompra objICVCompra = new ICVCompra();
                     String mes_periodo = request.getParameter("MES").trim();
                     String year_periodo = request.getParameter("YEAR").trim();

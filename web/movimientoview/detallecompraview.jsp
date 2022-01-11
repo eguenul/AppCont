@@ -4,17 +4,17 @@
 <%@page import="java.util.ArrayList"%>
 <%
    List<DetalleCompra> arraydetallecompra = (ArrayList<DetalleCompra>) request.getSession().getAttribute("arraydetallecompra");
-   
-   
+           
      ServletContext context = request.getServletContext();
      String pathservlet = context.getRealPath("/");
      DocumentoModel objdocumentomodel = new DocumentoModel(pathservlet);
      
 
 %>
-<div id="documento">
+ <div id="divdocumento">
     
-</div>
+ </div>
+
 <table  class="table table-bordered table-striped">
     <tr>
   
@@ -52,9 +52,7 @@
       ACCION
     </th>
     
-    <th>
-      ESTADO
-    </th>
+   
     
     
     <!--
@@ -118,16 +116,14 @@
     <td>
         
         
-        <button  id="botonaceptar<% out.print(i); %>"   onclick="addCompra('<% out.print( objdetallecompra.getRUT_Proveedor()); %>','<% out.print( objdetallecompra.getTipo_Doc()); %>','<% out.print( objdetallecompra.getFecha_Docto()); %>','<% out.print( objdetallecompra.getFolio()); %>' ,'<% out.print( objdetallecompra.getMonto_Exento()); %>','<% out.print( objdetallecompra.getMonto_Neto()); %>', '<% out.print( objdetallecompra.getMonto_Iva_No_Recuperable()); %>' ,'botonaceptar'+<% out.print(i); %>);" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-ok"></span>Aceptar</button>
+        <button  id="botonaceptar<% out.print(i); %>"   onclick="addCompra('<% out.print( objdetallecompra.getRUT_Proveedor()); %>','<% out.print( objdetallecompra.getTipo_Doc()); %>','<% out.print( objdetallecompra.getFecha_Docto()); %>','<% out.print( objdetallecompra.getFolio()); %>' ,'<% out.print( objdetallecompra.getMonto_Exento()); %>','<% out.print( objdetallecompra.getMonto_Neto()); %>', '<% out.print( objdetallecompra.getMonto_Iva_No_Recuperable()); %>' ,'botonaceptar'+<% out.print(i); %>);" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-download "></span>Importar</button>
         
             <!--
         <button class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-remove"></span>Rechazar</button>
    -->
         <!--      <button>Rechazar</button> -->
     </td>
-    <td>
-        PENDIENTE
-    </td>
+   
     </tr>
    <% i++; %>
     <% } %>

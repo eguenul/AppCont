@@ -303,8 +303,10 @@ public int getIdCliProv(String cliprovrut) throws SQLException, ClassNotFoundExc
         Statement stmt = objconexion.createStatement();
         
         ResultSet objresultset = stmt.executeQuery(sql);
-        int id = objresultset.getInt("CliProvId");
-    
+        int id=0;
+      if( objresultset.next()){
+        id = objresultset.getInt("CliProvId");
+      }
     
     return id;
 }

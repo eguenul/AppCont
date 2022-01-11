@@ -8,16 +8,18 @@ import java.util.ArrayList;
 import appcont.include.Conexion;
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 public class DocumentoModel {
 
     Connection objconexion; 
-
+    String pathservlet;
 public DocumentoModel(String pathservlet) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
   Conexion auxconexion = new Conexion(pathservlet);
   this.objconexion = auxconexion.obtener();
-    
+    this.pathservlet = pathservlet;
 }
     
 public List<Documento> listDocuments() throws SQLException{
@@ -44,12 +46,20 @@ return arrayDocumento;
     
 
         
-public int getSiiCod(int iddocumento) throws SQLException{
-    String sql = "Select *  from TipoDocumentos where TipoDocumentoId="+iddocumento;     
-    Statement stm = objconexion.createStatement();
-    ResultSet objrecordset = stm.executeQuery(sql);
-     objrecordset.next();   
-    return objrecordset.getInt("CodigoSii");
+public int getSiiCod(int iddocumento) throws SQLException, ClassNotFoundException, ParserConfigurationException{
+        try {
+            Conexion auxconexion = new Conexion(pathservlet);
+            this.objconexion = auxconexion.obtener();
+            
+            String sql = "Select *  from TipoDocumentos where TipoDocumentoId="+iddocumento;
+            Statement stm = this.objconexion.createStatement();
+            ResultSet objrecordset = stm.executeQuery(sql);
+            objrecordset.next();
+            return objrecordset.getInt("CodigoSii");
+        } catch (SAXException | IOException ex) {
+            Logger.getLogger(DocumentoModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
 }        
 
 
@@ -57,7 +67,7 @@ public int getSiiCod(int iddocumento) throws SQLException{
 
 public String getNombreDoc(int iddocumento) throws SQLException{
     String sql = "Select *  from TipoDocumentos where TipoDocumentoId="+iddocumento;     
-    Statement stm = objconexion.createStatement();
+    Statement stm = this.objconexion.createStatement();
     ResultSet objrecordset = stm.executeQuery(sql);
      objrecordset.next();   
     return objrecordset.getString("TipoDocumentoDes");
@@ -67,12 +77,17 @@ public String getNombreDoc(int iddocumento) throws SQLException{
 
 
 
-public int getId(String codsii) throws SQLException{
+public int getId(String codsii) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
+    
+      Conexion auxconexion = new Conexion(pathservlet);
+      this.objconexion = auxconexion.obtener();
+            
     int tipodocumentoid = 0;
     String sql = "Select * from TipoDocumentos where CodigoSii="+codsii;     
-    Statement stm = objconexion.createStatement();
+    System.out.print(sql);
+    Statement stm = this.objconexion.createStatement();
     ResultSet objrecordset = stm.executeQuery(sql);
-    while (objrecordset.next()){
+    if (objrecordset.next()){
         tipodocumentoid = objrecordset.getInt("TipoDocumentoId");
  }
     return tipodocumentoid;
@@ -82,7 +97,7 @@ public int getId(String codsii) throws SQLException{
 public String getNombreDocCodSii(String codsii) throws SQLException{
     
     String sql = "Select * from TipoDocumentos where CodigoSii="+codsii;     
-    Statement stm = objconexion.createStatement();
+    Statement stm = this.objconexion.createStatement();
     ResultSet objrecordset = stm.executeQuery(sql);
     objrecordset.next();
     return objrecordset.getString("TipoDocumentoDes");
@@ -93,7 +108,7 @@ public String getNombreDocCodSii(String codsii) throws SQLException{
 public Documento getObjDoc(int idDoc) throws SQLException{
     Documento objDoc = new Documento();
     String sql = "Select *  from TipoDocumentos where TipoDocumentoId="+idDoc;     
-    Statement stm = objconexion.createStatement();
+    Statement stm = this.objconexion.createStatement();
     ResultSet objrecordset = stm.executeQuery(sql);
     
     objrecordset.next();

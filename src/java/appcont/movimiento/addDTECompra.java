@@ -3,6 +3,7 @@ package appcont.movimiento;
 import appcont.cliprov.CliProvModel;
 import appcont.documento.DocumentoModel;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -47,13 +48,31 @@ public void  doPost(HttpServletRequest request, HttpServletResponse response) th
         int empresaid = (int) request.getSession().getAttribute("empresaid");
         request.getSession().setAttribute("modulo","addMovimiento");
         CliProvModel objCliProvModel = new CliProvModel(empresaid,pathservlet);
-        
+         PrintWriter out = response.getWriter();
         if(objCliProvModel.flagCliProv(cliprovrut)==true){
+          
+         MovimientoModel objMovimientoModel = new MovimientoModel(empresaid,pathservlet);
             
             
-         System.out.print("proveedor existente");
+        if(objMovimientoModel.searchDocSii(cliprovrut, tipodocsii, foliodoc)==true){
+            out.print("DOCUMENTO EXISTENTE");
+            
+        }else{
+            
+            out.print("DOCUMENTO NO INGRESADO");
+            
+        }
+            
+            
+            
+            
+            
+        
         }else{
             System.out.print("proveedor no existente");
+           
+            out.print("CLIENTE/PROVEEDOR NO SE ENCUENTRA EN EL SISTEMA");
+            
             
         }
         
