@@ -6,9 +6,7 @@
 package appcont.movimiento;
 
 import appcont.cliprov.CliProv;
-import appcont.cliprov.CliProvModel;
 import appcont.documento.Documento;
-import appcont.documento.DocumentoModel;
 import appcont.include.Conexion;
 import java.io.IOException;
 import java.sql.Connection;
@@ -34,49 +32,30 @@ public MovimientoModel(int empresaid, String pathservlet){
         
     
 
-public boolean searchDocSii(String cliprovrut, String codsii, String folio) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
+public int searchDocSii(int cliprovid, int iddoc, String folio) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
 
    Conexion objconexion = new Conexion(pathservlet);
     try (Connection auxconexion = objconexion.obtener()) {
-        CliProvModel objCliProvModel = new CliProvModel(this.empresaid,pathservlet);
-        DocumentoModel objDocumentoModel = new DocumentoModel(pathservlet);
-        int cliprovid = objCliProvModel.getIdCliProv(cliprovrut);
-        int iddoc = objDocumentoModel.getId(codsii);
-        
+       
         Statement stmt = auxconexion.createStatement();
         
-        String sqlQuery = "Select * from Movimiento where TipoDocumentoId=" + String.valueOf(iddoc) + "\n"
+        String sqlQuery = "Select Count(*) as Conteo from Movimiento where TipoDocumentoId=" + String.valueOf(iddoc) + "\n"
         + " and CliProvId="+  cliprovid + " and NumDoc=" + folio;
-        ResultSet objRecordset = stmt.executeQuery(sqlQuery);
-        
-       return objRecordset.next() != false;
-        
-        
+       int conteo = 0;
        
-    }
-   
-   
-   
-   
-   
+        ResultSet objRecordset = stmt.executeQuery(sqlQuery);
+        while (objRecordset.next()){
+            
+            conteo = objRecordset.getInt("Conteo");
+        }
+        
+        return conteo;
+       
+    } 
 
 }
 
 
-public void addDocSii(String cliprovrut, String codsii, String folio, int tipomovimiento) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
-
-if (searchDocSii(cliprovrut, codsii, folio)==true){    
-   CliProvModel objCliProvModel = new CliProvModel(this.empresaid,pathservlet);
-   DocumentoModel objDocumentoModel = new DocumentoModel(pathservlet);
-   /*
-   int cliprovid = objCliProvModel.getIdCliProv(cliprovrut);
-   int iddoc = objDocumentoModel.getId(codsii);
-   addDoc(cliprovid,iddoc, tipomovimiento); 
-   
-   */
-   
-}
-}
 
 public void addDoc(Movimiento objMovimiento, int codTipoMovimiento) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
  Conexion objconexion = new Conexion(pathservlet);

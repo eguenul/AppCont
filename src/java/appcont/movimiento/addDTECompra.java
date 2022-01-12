@@ -1,5 +1,6 @@
 package appcont.movimiento;
 
+import appcont.cliprov.CliProv;
 import appcont.cliprov.CliProvModel;
 import appcont.documento.DocumentoModel;
 import java.io.IOException;
@@ -40,7 +41,7 @@ public void  doPost(HttpServletRequest request, HttpServletResponse response) th
         
         DocumentoModel objDocumentoModel = new DocumentoModel(pathservlet);
         
-        int iddocumento =   objDocumentoModel.getId(tipodocsii);
+     
         
         
         
@@ -48,13 +49,18 @@ public void  doPost(HttpServletRequest request, HttpServletResponse response) th
         int empresaid = (int) request.getSession().getAttribute("empresaid");
         request.getSession().setAttribute("modulo","addMovimiento");
         CliProvModel objCliProvModel = new CliProvModel(empresaid,pathservlet);
-         PrintWriter out = response.getWriter();
-        if(objCliProvModel.flagCliProv(cliprovrut)==true){
+        PrintWriter out = response.getWriter();
+        out.print("buscando");
+        if(objCliProvModel.flagCliProv(cliprovrut)==1){
           
-         MovimientoModel objMovimientoModel = new MovimientoModel(empresaid,pathservlet);
-            
-            
-        if(objMovimientoModel.searchDocSii(cliprovrut, tipodocsii, foliodoc)==true){
+     
+        
+         int cliprovid =  objCliProvModel.getIdCliProv(cliprovrut);   
+         int iddoc = objDocumentoModel.getId(tipodocsii);  
+         
+       MovimientoModel objMovimientoModel = new MovimientoModel(empresaid,pathservlet);
+        if(objMovimientoModel.searchDocSii(cliprovid, iddoc, foliodoc)==1){
+         
             out.print("DOCUMENTO EXISTENTE");
             
         }else{
@@ -71,8 +77,18 @@ public void  doPost(HttpServletRequest request, HttpServletResponse response) th
         }else{
             System.out.print("proveedor no existente");
            
-            out.print("CLIENTE/PROVEEDOR NO SE ENCUENTRA EN EL SISTEMA");
-            
+             CliProv objCliProv = new CliProv();
+             objCliProv.setCliprovraz("-");
+             objCliProv.setCliprovrut("-");
+             objCliProv.setCliprovdir("-");
+             objCliProv.setCliprovgir("-");
+             objCliProv.setCliprovcom("-");
+             objCliProv.setCliprovciu("-");
+             objCliProv.setCliprovfon("-");
+             objCliProv.setCliprovema(request.getParameter("CliProvEma"));
+             CliProvModel objCliProvModel2 = new CliProvModel(empresaid,pathservlet);
+             objCliProv.setCliprovcod(objCliProvModel2.getCorrelativo());
+             objCliProvModel2.addCliProv(objCliProv);  
             
         }
         

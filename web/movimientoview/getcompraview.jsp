@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>IMPORTACION DTE COMPRA</h1>
-        <form action="getCompra" method="POST">
+        <form name="formCompra" action="getCompra" method="POST">
         <table class="table table-bordered table-striped">
             <thead>
             <tr>
@@ -25,7 +25,7 @@
                   MES  
                 </td>  
                 <td>
-                    <select id="MES">
+                    <select name="MES" id="MES">
                         <option value="01">ENERO</option>
                         <option value="02">FEBRERO</option>
                         <option value="03">MARZO</option>
@@ -44,9 +44,9 @@
                   AÑO 
                 </td>  
                 <td>
-                 <input id="YEAR">
+                 <input name="YEAR" id="YEAR">
                 </td>
-                <td><button onclick="cargarAjax('getCompra','ACC=COMPRA&MES='+document.getElementById('MES').value+'&YEAR='+document.getElementById('YEAR').value,'listadocompras');" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-download"></span> Importar RC</button>
+                <td><button onclick="document.formCompra.submit();"  class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-download"></span> Importar RC</button>
                  
                     <button onclick="window.location='getCompra';" type="button" name="btnLimpiar" class="btn btn-primary btn-sm">
           <span class="glyphicon glyphicon-file"></span>Nuevo
@@ -65,8 +65,10 @@
                 </td>
             </tr>  
         </table>
+            <input name="ACC" type="hidden" value="<% out.print(request.getSession().getAttribute("ACC")); %>">
+              <input id="empresaid" name="empresaid" type="hidden" value="<% out.print(request.getSession().getAttribute("empresaid")); %>">
         </form>
-        <div id="listadocompras"></div>  
+       
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     </body>

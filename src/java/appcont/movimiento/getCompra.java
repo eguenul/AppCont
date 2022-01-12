@@ -31,6 +31,7 @@ public class getCompra extends HttpServlet {
        int empresaid2 = (int) request.getSession().getAttribute("empresaid");
 
        request.getSession().setAttribute("empresaid",empresaid2);
+       request.getSession().setAttribute("ACC","COMPRA");
  
       
         getServletConfig().getServletContext().getRequestDispatcher("/movimientoview/getcompraview.jsp").forward(request,response);

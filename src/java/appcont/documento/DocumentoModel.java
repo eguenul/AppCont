@@ -79,8 +79,8 @@ public String getNombreDoc(int iddocumento) throws SQLException{
 
 public int getId(String codsii) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
     
-      Conexion auxconexion = new Conexion(pathservlet);
-      this.objconexion = auxconexion.obtener();
+    Conexion auxconexion = new Conexion(pathservlet);
+    this.objconexion = auxconexion.obtener();
             
     int tipodocumentoid = 0;
     String sql = "Select * from TipoDocumentos where CodigoSii="+codsii;     
@@ -94,9 +94,11 @@ public int getId(String codsii) throws SQLException, ClassNotFoundException, Par
 }
 
 
-public String getNombreDocCodSii(String codsii) throws SQLException{
-    
+public String getNombreDocCodSii(String codsii) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
+    Conexion auxconexion = new Conexion(pathservlet);
+      this.objconexion = auxconexion.obtener();
     String sql = "Select * from TipoDocumentos where CodigoSii="+codsii;     
+System.out.print(sql);
     Statement stm = this.objconexion.createStatement();
     ResultSet objrecordset = stm.executeQuery(sql);
     objrecordset.next();

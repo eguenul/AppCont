@@ -7,14 +7,25 @@
            
      ServletContext context = request.getServletContext();
      String pathservlet = context.getRealPath("/");
+     
      DocumentoModel objdocumentomodel = new DocumentoModel(pathservlet);
      
 
-%>
- <div id="divdocumento">
-    
- </div>
 
+%>
+<html>
+<head>
+<title>TODO supply a title</title>
+<link rel="stylesheet" type="text/css" href="css/estilo.css" media="screen" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"> <!?Con esto garantizamos que se vea bien en dispositivos móviles?> 
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> 
+   <script src="scripts/ajax.js"></script>
+   <script src="scripts/getCompra.js"></script>    
+</head>
+<body>
+    
+    <form name="formADDCompra" action="addDTECompra" method="POST">
 <table  class="table table-bordered table-striped">
     <tr>
   
@@ -70,7 +81,7 @@
      <tr>
  
     <td>
-        <%   out.print(objdocumentomodel.getNombreDocCodSii(objdetallecompra.getTipo_Doc()));  %>
+        <%   out.print(objdocumentomodel.getNombreDocCodSii(objdetallecompra.getTipo_Doc()));   %>
     
         
     </td>
@@ -93,7 +104,7 @@
            <option>COMPRA DE SUPERMERCADO</option>
         </select>
     -->
-     </td>
+    
         <td>
       <% out.print(objdetallecompra.getRUT_Proveedor()); %>
     </td>
@@ -129,4 +140,7 @@
     <% } %>
     
 </table>
-    <input type="hidden" id="empresaid" value="<% out.print(request.getSession().getAttribute("empresaid")); %>">
+    <input id="empresaid" name="empresaid" type="hidden" value="<% out.print(request.getSession().getAttribute("empresaid")); %>">
+    </form>
+</body>
+</html>
