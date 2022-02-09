@@ -188,8 +188,9 @@ public int getCorrelativo() throws SQLException{
         return correlativo;
     } catch (ClassNotFoundException | ParserConfigurationException | SAXException | IOException ex) {
         Logger.getLogger(CliProvModel.class.getName()).log(Level.SEVERE, null, ex);
+        return 0;
     }
-    return 0;
+    
 }
 
 
@@ -315,19 +316,22 @@ public int getIdCliProv(String cliprovrut) throws SQLException, ClassNotFoundExc
 
 public int flagCliProv (String cliprovrut) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
     
-    Conexion auxconexion = new Conexion(pathservlet);
+    Conexion auxconexion = new Conexion(this.pathservlet);
     Connection objconexion = auxconexion.obtener();
-        
-        
-        String sql ="Select Count(*) as Conteo from CliProv where CliProvRut='"+cliprovrut+"' and EmpresaId="+String.valueOf(empresaid);
-         System.out.print(sql);
-        Statement stmt = objconexion.createStatement();
-        ResultSet objresultset = stmt.executeQuery(sql);
-  
-        int conteo=0;
-    while(objresultset.next()){
-      conteo = objresultset.getInt("Conteo");
-    }
+     
+        System.out.print("buscando cliente/proveedor");
+    String sql ="Select Count(*) as Conteo from CliProv where CliProvRut='"+cliprovrut+"' and EmpresaId="+String.valueOf(empresaid);
+    System.out.print(sql);
+    Statement stmt = objconexion.createStatement();
+    int conteo = 0;
+   
+    try (ResultSet objresultset = stmt.executeQuery(sql)) {
+        conteo = 0;
+        while(objresultset.next()){
+            conteo = objresultset.getInt("Conteo");
+        }
+   
+       }
     return conteo;
  }
   
