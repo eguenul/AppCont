@@ -73,13 +73,13 @@ public class getCompra extends HttpServlet {
                     
                     
                    /* realizo la peticion HTTP PARA OBTENER LAS COMPRAS */ 
-                     String stringCSV =  objICVCompra.obtieneCompras("/home/esteban/appdte/certificate/eguenul", "amulen1956", "77813960-K", periodo,"");
+                    String stringCSV =  objICVCompra.obtieneCompras("/home/esteban/appdte/certificate/eguenul", "amulen1956", "77813960-K", periodo,"");
                   
                     /* PROCEDO A FORMATEAR EL RESULTADO CSV */
                     ArrayList<DetalleCompra>  arraydetallecompra =    objICVCompra.formatCSV(stringCSV); 
                      
-               request.getSession().setAttribute("arraydetallecompra", arraydetallecompra);
-               getServletConfig().getServletContext().getRequestDispatcher("/movimientoview/detallecompraview.jsp").forward(request,response);
+                    request.getSession().setAttribute("arraydetallecompra", arraydetallecompra);
+                    getServletConfig().getServletContext().getRequestDispatcher("/movimientoview/detallecompraview.jsp").forward(request,response);
    
                      
                     

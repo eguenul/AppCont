@@ -1,19 +1,16 @@
-
 <html>
-    <head>
-        <title>TODO supply a title</title>
-     <link rel="stylesheet" type="text/css" href="css/estilo.css" media="screen" />
- 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
+<title>TODO supply a title</title>
+<link rel="stylesheet" type="text/css" href="css/estilo.css" media="screen" />
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"> <!?Con esto garantizamos que se vea bien en dispositivos móviles?> 
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> 
    <script src="scripts/ajax.js"></script>
    <script src="scripts/getCompra.js"></script>
-    
-    </head>
+ </head>
     <body>
         <h1>IMPORTACION DTE COMPRA</h1>
-        <form name="formCompra" action="getCompra" method="POST">
+        <form name="formCompra" method="POST">
         <table class="table table-bordered table-striped">
             <thead>
             <tr>
@@ -46,9 +43,9 @@
                 <td>
                  <input name="YEAR" id="YEAR">
                 </td>
-                <td><button onclick="document.formCompra.submit();"  class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-download"></span> Importar RC</button>
+                <td><button type="button" onclick="getCompra(document.getElementById('YEAR').value,document.getElementById('MES').value);"  class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-download"></span> Importar RC</button>
                  
-                    <button onclick="window.location='getCompra';" type="button" name="btnLimpiar" class="btn btn-primary btn-sm">
+                    <button onclick="window.location='getCompra';"  type="button" name="btnLimpiar" class="btn btn-primary btn-sm">
           <span class="glyphicon glyphicon-file"></span>Nuevo
            </button> 
                     
@@ -68,6 +65,13 @@
             <input name="ACC" type="hidden" value="<% out.print(request.getSession().getAttribute("ACC")); %>">
               <input id="empresaid" name="empresaid" type="hidden" value="<% out.print(request.getSession().getAttribute("empresaid")); %>">
         </form>
+        
+        <div id="div_detallecompra">
+            
+            
+            
+        </div>
+
        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

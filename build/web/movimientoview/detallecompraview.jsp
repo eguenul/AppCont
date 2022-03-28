@@ -13,19 +13,8 @@
 
 
 %>
-<html>
-<head>
-<title>TODO supply a title</title>
-<link rel="stylesheet" type="text/css" href="css/estilo.css" media="screen" />
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1"> <!?Con esto garantizamos que se vea bien en dispositivos móviles?> 
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> 
-   <script src="scripts/ajax.js"></script>
-   <script src="scripts/getCompra.js"></script>    
-</head>
-<body>
     
-    <form name="formADDCompra" action="addDTECompra" method="POST">
+    <form name="formADDCompra"  method="POST">
 <table  class="table table-bordered table-striped">
     <tr>
   
@@ -142,5 +131,3 @@
 </table>
     <input id="empresaid" name="empresaid" type="hidden" value="<% out.print(request.getSession().getAttribute("empresaid")); %>">
     </form>
-</body>
-</html>

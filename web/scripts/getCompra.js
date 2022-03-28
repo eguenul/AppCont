@@ -3,7 +3,7 @@ function addCompra(rutproveedor,tipodoc, fechadoc,foliodoc,montoexento,montoneto
     
    
 
-var parametro =  "CliProvRut=" + rutproveedor + "&TipoDoc="+tipodoc+
+   var parametro =  "CliProvRut=" + rutproveedor + "&TipoDoc="+tipodoc+
                  "&FechaDoc="+fechadoc+"&FolioDoc="+foliodoc+
                  "&MontoExento="+montoexento+"&MontoNeto="+montoneto+
                  "&MontoTotal="+montototal;
@@ -15,4 +15,13 @@ var parametro =  "CliProvRut=" + rutproveedor + "&TipoDoc="+tipodoc+
                  
                   
                  
+}
+
+
+function getCompra(year,mes){
+    
+ var parametro = "ACC=COMPRA&YEAR="+year+"&MES="+mes;   
+    
+    cargarAjax('getCompra',parametro,'div_detallecompra');
+    
 }
