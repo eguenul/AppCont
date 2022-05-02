@@ -202,7 +202,7 @@ public ArrayList<DetalleVenta> formatCSV(String stringCSV) throws IOException{
             
             
             
-  String   stringCSV2 =  stringCSV.replace(headerCSV, headerCSV2);
+String   stringCSV2 =  stringCSV.replace(headerCSV, headerCSV2);
 
  System.out.print(stringCSV2);
     InputStream isjson = new ByteArrayInputStream(stringCSV2.getBytes("UTF-8")); 

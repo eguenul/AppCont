@@ -4,11 +4,11 @@
 
 <%    
     ServletContext context = request.getServletContext();
-         String pathservlet = context.getRealPath("/");
+    String pathservlet = context.getRealPath("/");
     
     DocumentoModel objDocumentoModel = new DocumentoModel(pathservlet);
-      List<Documento> arraylistdocumento = objDocumentoModel.listDocuments();
-      String estadodoc = (String) request.getSession().getAttribute("ESTADODOC");
+    List<Documento> arraylistdocumento = objDocumentoModel.listDocuments();
+    String estadodoc = (String) request.getSession().getAttribute("ESTADODOC");
 
 
 

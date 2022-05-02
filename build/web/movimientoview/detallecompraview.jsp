@@ -96,9 +96,12 @@
     
         <td>
       <% out.print(objdetallecompra.getRUT_Proveedor()); %>
-    </td>
+      <input type="hidden"  value="<% out.print(objdetallecompra.getRUT_Proveedor());  %>" name="CliProvRut<% out.print(i); %>" id="CliProvRut<% out.print(i); %>"    >
+   
+        </td>
      <td>
       <% out.print(objdetallecompra.getRazon_Social()); %>
+      <input type="hidden" value="<% out.print(objdetallecompra.getRazon_Social()); %>" name="CliProvRaz<% out.print(i); %>" id="CliProvRaz<% out.print(i); %>"    >
     </td>
     
    <!-- <td> -->
@@ -116,7 +119,7 @@
     <td>
         
         
-        <button  id="botonaceptar<% out.print(i); %>"   onclick="addCompra('<% out.print( objdetallecompra.getRUT_Proveedor()); %>','<% out.print( objdetallecompra.getTipo_Doc()); %>','<% out.print( objdetallecompra.getFecha_Docto()); %>','<% out.print( objdetallecompra.getFolio()); %>' ,'<% out.print( objdetallecompra.getMonto_Exento()); %>','<% out.print( objdetallecompra.getMonto_Neto()); %>', '<% out.print( objdetallecompra.getMonto_Iva_No_Recuperable()); %>' ,'botonaceptar'+<% out.print(i); %>);" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-download "></span>Importar</button>
+        <button type="button"  id="botonaceptar<% out.print(i); %>"   onclick="addCompra('<% out.print( objdetallecompra.getRUT_Proveedor()); %>','<% out.print( objdetallecompra.getRazon_Social()); %>','<% out.print( objdetallecompra.getTipo_Doc()); %>','<% out.print( objdetallecompra.getFecha_Docto()); %>','<% out.print( objdetallecompra.getFolio()); %>' ,'<% out.print( objdetallecompra.getMonto_Exento()); %>','<% out.print( objdetallecompra.getMonto_Neto()); %>', '<% out.print( objdetallecompra.getMonto_Iva_No_Recuperable()); %>' ,'botonaceptar'+<% out.print(i); %>);" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-download "></span>Importar</button>
         
             <!--
         <button class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-remove"></span>Rechazar</button>

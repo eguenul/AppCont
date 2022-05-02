@@ -319,12 +319,14 @@ public int flagCliProv (String cliprovrut) throws SQLException, ClassNotFoundExc
     Conexion auxconexion = new Conexion(this.pathservlet);
     Connection objconexion = auxconexion.obtener();
      
-        System.out.print("buscando cliente/proveedor");
+    System.out.print("buscando cliente/proveedor");
     String sql ="Select Count(*) as Conteo from CliProv where CliProvRut='"+cliprovrut+"' and EmpresaId="+String.valueOf(empresaid);
     System.out.print(sql);
-    Statement stmt = objconexion.createStatement();
-    int conteo = 0;
    
+   
+    int conteo = 0;
+    
+    Statement stmt = objconexion.createStatement();
     try (ResultSet objresultset = stmt.executeQuery(sql)) {
         conteo = 0;
         while(objresultset.next()){
@@ -332,6 +334,7 @@ public int flagCliProv (String cliprovrut) throws SQLException, ClassNotFoundExc
         }
    
        }
+
     return conteo;
  }
   

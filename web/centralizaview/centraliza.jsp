@@ -2,7 +2,7 @@
 <%@page import="java.util.ArrayList"%>
 <html> 
     <head>
-        <meta charset="utf-8"> 
+     <meta charset="utf-8"> 
         
         
 <meta name="viewport" content="width=device-width, initial-scale=1"> <!?Con esto garantizamos que se vea bien en dispositivos móviles?> 

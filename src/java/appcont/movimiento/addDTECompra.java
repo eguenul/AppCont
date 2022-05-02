@@ -29,6 +29,9 @@ public void  doPost(HttpServletRequest request, HttpServletResponse response) th
         
         
         String cliprovrut = request.getParameter("CliProvRut");
+       /*
+        String cliprovraz = request.getParameter("CliProvRaz");
+        */
         String tipodocsii = request.getParameter("TipoDoc");
         
         
@@ -78,8 +81,10 @@ public void  doPost(HttpServletRequest request, HttpServletResponse response) th
             System.out.print("proveedor no existente");
            
              CliProv objCliProv = new CliProv();
-             objCliProv.setCliprovraz("-");
-             objCliProv.setCliprovrut("-");
+             /*
+             objCliProv.setCliprovraz(cliprovraz);
+ */             
+             objCliProv.setCliprovrut(cliprovrut);
              objCliProv.setCliprovdir("-");
              objCliProv.setCliprovgir("-");
              objCliProv.setCliprovcom("-");

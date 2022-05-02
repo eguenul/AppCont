@@ -1,18 +1,19 @@
-function addCompra(rutproveedor,tipodoc, fechadoc,foliodoc,montoexento,montoneto, montototal,botonaceptar){
+function addCompra(rutproveedor,razproveedor ,tipodoc, fechadoc,foliodoc,montoexento,montoneto, montototal,botonaceptar){
    
     
    
 
-   var parametro =  "CliProvRut=" + rutproveedor + "&TipoDoc="+tipodoc+
+   var parametro = "ACC=COMPRA&CliProvRut=" + rutproveedor + "&TipoDoc="+tipodoc+
+                 "&CliProvRaz="+razproveedor+     
                  "&FechaDoc="+fechadoc+"&FolioDoc="+foliodoc+
                  "&MontoExento="+montoexento+"&MontoNeto="+montoneto+
                  "&MontoTotal="+montototal;
               
     cargarAjax('addDTECompra',parametro,'divdocumento');
-                 
-                  detalles = document.getElementById(botonaceptar);
-                  detalles.disabled = 'true';
-                 
+                detalles = document.getElementById(botonaceptar);
+            /*
+              detalles.disabled = 'true';
+            */     
                   
                  
 }
@@ -21,7 +22,7 @@ function addCompra(rutproveedor,tipodoc, fechadoc,foliodoc,montoexento,montoneto
 function getCompra(year,mes){
     
  var parametro = "ACC=COMPRA&YEAR="+year+"&MES="+mes;   
-    
-    cargarAjax('getCompra',parametro,'div_detallecompra');
+  
+ cargarAjax('getCompra',parametro,'div_detallecompra');
     
 }
