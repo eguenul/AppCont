@@ -295,13 +295,14 @@ public ArrayList<CliProv> searchRut(String cliprovrut) throws SQLException, Clas
 
 
 public int getIdCliProv(String cliprovrut) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
-    
+               String sql ="Select * from CliProv where CliProvRut='"+cliprovrut+"' and EmpresaId="+String.valueOf(empresaid);
+  
+         System.out.print(sql);
         Conexion auxconexion = new Conexion(pathservlet);
         Connection objconexion = auxconexion.obtener();
         
         
-        String sql ="Select * from CliProv where CliProvRut='"+cliprovrut+"' and EmpresaId="+String.valueOf(empresaid);
-        Statement stmt = objconexion.createStatement();
+           Statement stmt = objconexion.createStatement();
         
         ResultSet objresultset = stmt.executeQuery(sql);
         int id=0;
@@ -331,6 +332,10 @@ public int flagCliProv (String cliprovrut) throws SQLException, ClassNotFoundExc
         conteo = 0;
         while(objresultset.next()){
             conteo = objresultset.getInt("Conteo");
+        
+        System.out.print(conteo);
+        
+        
         }
    
        }
@@ -338,7 +343,41 @@ public int flagCliProv (String cliprovrut) throws SQLException, ClassNotFoundExc
     return conteo;
  }
   
+ 
+
+public CliProv getCliProvRut(String cliprovrut) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
+  CliProv  objCliProv = new CliProv();
     
+ Conexion auxconexion = new Conexion(this.pathservlet);
+    Connection objconexion = auxconexion.obtener();
+     Statement stmt = objconexion.createStatement();
+     
+    String sql ="Select * from CliProv where CliProvRut='"+cliprovrut+"' and EmpresaId="+String.valueOf(empresaid);
+    ResultSet objrecordset = stmt.executeQuery(sql);
+        
+        while(objrecordset.next()){
+           
+            objCliProv.setCliprovciu(objrecordset.getString("CliProvCiu"));
+            objCliProv.setCliprovcod(objrecordset.getInt("CliProvCod"));
+            objCliProv.setCliprovcom(objrecordset.getString("CliProvCom"));
+            objCliProv.setCliprovdir(objrecordset.getString("CliProvDir"));
+            objCliProv.setCliprovema(objrecordset.getString("CliProvEma"));
+            objCliProv.setCliprovraz(objrecordset.getString("CliProvRaz"));
+            objCliProv.setCliprovfon(objrecordset.getString("CliProvFon"));
+            objCliProv.setCliprovgir(objrecordset.getString("CliProvGir"));
+            objCliProv.setCliprovrut(objrecordset.getString("CliProvRut"));
+            objCliProv.setCliprovid(objrecordset.getInt("CliProvId"));
+        }   
+
+  
+  
+  
+  
+  
+  
+  
+    return objCliProv;
+}
     
     
    

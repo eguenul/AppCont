@@ -56,6 +56,39 @@ public int searchDocSii(int cliprovid, int iddoc, String folio) throws SQLExcept
 }
 
 
+public int searchDocSiiRut(String cliprovrut, int iddoc, String folio) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
+
+   Conexion objconexion = new Conexion(pathservlet);
+ 
+   Connection auxconexion = objconexion.obtener();
+       
+        Statement stmt = auxconexion.createStatement();
+      
+        String sqlQuery = "Select Count(*) as Conteo from Movimiento \n"+ 
+ "inner join CliProv on Movimiento.CliProvId = CliProv.CliProvId \n"+
+ "where TipoDocumentoId=" + String.valueOf(iddoc) + "\n"+
+ "and NumDoc=" + String.valueOf(folio)+  " and CliProv.CliProvRut = '" + cliprovrut + "'";
+
+        System.out.print(sqlQuery);
+        int conteo = 0;
+       
+        ResultSet objRecordset = stmt.executeQuery(sqlQuery);
+        while (objRecordset.next()){
+            
+            conteo = objRecordset.getInt("Conteo");
+        }
+        
+
+       
+    
+
+ return conteo;
+}
+
+
+
+
+
 
 public void addDoc(Movimiento objMovimiento, int codTipoMovimiento) throws SQLException, ClassNotFoundException, ParserConfigurationException, SAXException, IOException{
  Conexion objconexion = new Conexion(pathservlet);

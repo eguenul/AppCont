@@ -1,17 +1,16 @@
+<%@page import="appcont.movimiento.MovimientoModel"%>
+<%@page import="appcont.cliprov.CliProvModel"%>
 <%@page import="getdte.DetalleCompra"%>
 <%@page import="appcont.documento.DocumentoModel"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%
-   List<DetalleCompra> arraydetallecompra = (ArrayList<DetalleCompra>) request.getSession().getAttribute("arraydetallecompra");
-           
-     ServletContext context = request.getServletContext();
-     String pathservlet = context.getRealPath("/");
-     
-     DocumentoModel objdocumentomodel = new DocumentoModel(pathservlet);
-     
-
-
+   List<DetalleCompra> arraydetallecompra = (ArrayList<DetalleCompra>) request.getSession().getAttribute("arraydetallecompra");    
+   ServletContext context = request.getServletContext();
+   String pathservlet = context.getRealPath("/");
+        
+   int empresaid = (int) request.getSession().getAttribute("empresaid");
+  DocumentoModel objdocumentomodel = new DocumentoModel(pathservlet);  
 %>
     
     <form name="formADDCompra"  method="POST">
@@ -65,8 +64,20 @@
     <%
         int i=0;
         for (DetalleCompra objdetallecompra :  arraydetallecompra){
-     %>
      
+        String rutproveedor = objdetallecompra.getRUT_Proveedor();
+        CliProvModel  objCliProvModel = new CliProvModel(empresaid,pathservlet); 
+        int idcliprov = objCliProvModel.getIdCliProv(rutproveedor);
+        int tipodocid = objdocumentomodel.getId(objdetallecompra.getTipo_Doc());
+        int numdoc =  Integer.parseInt(objdetallecompra.getFolio());
+
+        MovimientoModel objMovimientoModel = new MovimientoModel(empresaid,pathservlet);    
+/*
+  if(objMovimientoModel.searchDocSiiRut(rutproveedor, tipodocid, String.valueOf(numdoc))==0){
+*/
+     
+%>
+      
      <tr>
  
     <td>
@@ -130,7 +141,7 @@
     </tr>
    <% i++; %>
     <% } %>
-    
-</table>
+   
+ </table>
     <input id="empresaid" name="empresaid" type="hidden" value="<% out.print(request.getSession().getAttribute("empresaid")); %>">
     </form>

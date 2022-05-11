@@ -9,9 +9,15 @@ function addCompra(rutproveedor,razproveedor ,tipodoc, fechadoc,foliodoc,montoex
                  "&MontoExento="+montoexento+"&MontoNeto="+montoneto+
                  "&MontoTotal="+montototal;
               
-    cargarAjax('addDTECompra',parametro,'divdocumento');
-                detalles = document.getElementById(botonaceptar);
-            /*
+    cargarAjax('addDTECompra',parametro,'div_detallecompra');
+           
+    /*
+    
+    detalles = document.getElementById(botonaceptar);
+    
+    */
+    
+    /*
               detalles.disabled = 'true';
             */     
                   
