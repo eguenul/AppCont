@@ -6,7 +6,6 @@ import appcont.documento.DocumentoModel;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletContext;
@@ -26,13 +25,7 @@ public void  doPost(HttpServletRequest request, HttpServletResponse response) th
     try {
         
         
-          response.setContentType("text/html");
-
-        //Objetemos el escritor hacia el Cliente
-        PrintWriter out1 = response.getWriter();
-
-        //ya podemos enviar al navegador
-        out1.println("gola");
+         
         
         
         
@@ -54,7 +47,6 @@ public void  doPost(HttpServletRequest request, HttpServletResponse response) th
         String montoexento = request.getParameter("MontoExento");
         String montoneto = request.getParameter("MontoNeto");
         String montototal = request.getParameter("MontoTotal");
-        
         DocumentoModel objDocumentoModel = new DocumentoModel(pathservlet);
         
      
